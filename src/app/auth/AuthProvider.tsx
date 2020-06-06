@@ -8,10 +8,20 @@ const setAuthClient = (authClient) => {
   authClient = _authClient;
 };
 export const getAuthClient = () => _authClient;
-
+const isClient = process.browser;
+const onRedirectCallback = (appState) => {
+  if (isClient) {
+    window.history.replaceState(
+      {},
+      document.title,
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname
+    );
+  }
+};
 export const AuthProvider = ({
   children,
-  onRedirectCallback,
   ...initOptions
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
