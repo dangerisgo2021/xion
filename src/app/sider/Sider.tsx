@@ -11,6 +11,7 @@ export const Sider = ({ children }) => {
       breakpoint="lg"
       collapsedWidth="0"
       style={{ height: "100vh" }}
+      zeroWidthTriggerStyle={{ top: "12px" }}
     >
       <div ref={ref}>{children}</div>
     </AntSider>
