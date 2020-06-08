@@ -25,18 +25,13 @@ const registerActionType = ({ namespace = "ACTION", type }) => {
   }
 };
 
-export const actionCreatorFactory = ({
-  namespace,
-  type,
-  creator = (...args) => ({ ...args }),
-}) => {
+export const actionCreatorFactory = ({ namespace, type }) => {
   let registeredType = registerActionType({ namespace, type });
-  const actionCreator = (...args) => {
+  const actionCreator = (payload) => {
     return {
       type: registeredType,
-      payload: creator ? creator(...args) : {},
-      // disabling set meta till i can figure out why this is null
-      //     meta: this?.meta,
+      payload,
+      setMeta: (meta) => ({ type: registeredType, payload, meta }),
     };
   };
   actionCreator.type = registeredType;
