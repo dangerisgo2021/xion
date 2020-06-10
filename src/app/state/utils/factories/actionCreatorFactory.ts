@@ -27,7 +27,7 @@ const registerActionType = ({ namespace = "ACTION", type }) => {
 
 export const actionCreatorFactory = ({ namespace, type }) => {
   let registeredType = registerActionType({ namespace, type });
-  const actionCreator = (payload) => {
+  const actionCreator = (payload?) => {
     return {
       type: registeredType,
       payload,
