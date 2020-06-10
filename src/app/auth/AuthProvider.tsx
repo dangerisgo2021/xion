@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { AuthContext } from "./useAuth";
+import { auth0Config } from "./auth0Config";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import { useDispatch } from "react-redux";
+import { userReceived } from "./actions";
 
 let _authClient = null;
 
 const setAuthClient = (authClient) => {
-  authClient = _authClient;
+  _authClient = authClient;
 };
 export const getAuthClient = () => _authClient;
 const isClient = process.browser;
@@ -20,10 +23,8 @@ const onRedirectCallback = (appState) => {
     );
   }
 };
-export const AuthProvider = ({
-  children,
-  ...initOptions
-}) => {
+export const AuthProvider = ({ children }) => {
+  const dispatch = useDispatch();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState(null);
@@ -33,9 +34,8 @@ export const AuthProvider = ({
   useEffect(() => {
     const initAuth0 = async () => {
       // @ts-ignore
-      const auth0FromHook = await createAuth0Client(initOptions);
+      const auth0FromHook = await createAuth0Client(auth0Config);
       setAuth0(auth0FromHook);
-      setAuthClient(auth0FromHook);
       if (window.location.search.includes("code=")) {
         const { appState } = await auth0FromHook.handleRedirectCallback();
         onRedirectCallback(appState);
@@ -68,6 +68,7 @@ export const AuthProvider = ({
     setUser(user);
     setIsAuthenticated(true);
   };
+  const logout = (...p) => auth0Client.logout(...p);
 
   const handleRedirectCallback = async () => {
     setLoading(true);
@@ -77,6 +78,18 @@ export const AuthProvider = ({
     setIsAuthenticated(true);
     setUser(user);
   };
+
+  useEffect(() => {
+    if (auth0Client) {
+      setAuthClient({ ...auth0Client, loginWithPopup, logout });
+    }
+  }, [auth0Client]);
+  useEffect(() => {
+    if (user) {
+      dispatch(userReceived(user));
+    }
+  }, [user]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -90,7 +103,7 @@ export const AuthProvider = ({
         loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p) => auth0Client.logout(...p),
+        logout,
       }}
     >
       {children}

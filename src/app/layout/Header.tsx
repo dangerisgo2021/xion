@@ -1,10 +1,9 @@
 import React from "react";
 import { Layout, Row } from "antd";
 import { Typography } from "antd";
-import { Avatar } from "app/avatar/Avatar";
 
 const { Header: AntHeader } = Layout;
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 export const Header = () => {
   // need to manually set keys on button to prevent
@@ -24,7 +23,6 @@ export const Header = () => {
         >
           Logo Here
         </Title>
-        <Avatar />
       </Row>
     </AntHeader>
   );

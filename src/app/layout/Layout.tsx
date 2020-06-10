@@ -6,10 +6,12 @@ import { NavMenu } from "../nav/NavMenu";
 import { Modals } from "./Modals";
 import { Footer } from "./Footer";
 import { Content } from "./Content";
+import { Avatar } from "app/avatar/Avatar";
 
 export const AppLayout = ({ children }) => (
   <Layout>
     <Sider>
+      <Avatar />
       <NavMenu />
     </Sider>
     <Layout>
