@@ -1,9 +1,9 @@
 import ReducerBuilder from "app/state/utils/factories/ReducerBuilder";
-// noinspection SpellCheckingInspection
-import { v1 as uuidv1 } from "uuid";
+import { v1 as uuid } from "uuid";
 
 export const sessionReducer = new ReducerBuilder()
   .setInitialState({
-    id: uuidv1(),
+    id: uuid(),
+      clientId: "xionFrontDeskWeb"
   })
   .build();

@@ -1,9 +1,34 @@
-import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
+import {
+  ApolloClient,
+  HttpLink,
+  InMemoryCache,
+  split,
+  concat,
+  ApolloLink,
+} from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "@apollo/link-ws";
+import { getSession } from "app/session/selectors/getSession";
 
 export const createBrowserClient = ({ initialState, uri }) => {
   const httpLink = new HttpLink({ uri });
+
+  const contextMiddleware = new ApolloLink((operation, forward) => {
+    const session = getSession(
+      (window as any)?.__NEXT_REDUX_STORE__?.getState()
+    );
+
+    operation.setContext(({ headers = {} }) => ({
+      headers: {
+        ...headers,
+        authorization: `Bearer ${localStorage.getItem("token")}` || undefined,
+        sessionId: session.id,
+        clientId: session.clientId,
+      },
+    }));
+
+    return forward(operation);
+  });
 
   const wsLink = new WebSocketLink({
     uri: uri.replace("http", "ws"),
@@ -11,7 +36,7 @@ export const createBrowserClient = ({ initialState, uri }) => {
       reconnect: true,
     },
   });
-  const link = split(
+  const splitLink = split(
     ({ query }) => {
       const definition = getMainDefinition(query);
       return (
@@ -24,7 +49,7 @@ export const createBrowserClient = ({ initialState, uri }) => {
   );
   return new ApolloClient({
     cache: new InMemoryCache().restore(initialState || {}),
-    link,
+    link: concat(contextMiddleware, splitLink),
     connectToDevTools: true,
   });
 };

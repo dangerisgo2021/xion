@@ -22,6 +22,5 @@ export const initGraphqlClient = (initialState) => {
   if (!isServer && !apolloClient) {
     apolloClient = createBrowserClient({ initialState, uri: GRAPHQL_URL });
   }
-
   return apolloClient;
 };

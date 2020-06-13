@@ -69,6 +69,10 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
   };
   const logout = (...p) => auth0Client.logout(...p);
+  const getIdTokenClaims = (...p) => auth0Client.getIdTokenClaims(...p);
+  const loginWithRedirect = (...p) => auth0Client.loginWithRedirect(...p);
+  const getTokenSilently = (...p) => auth0Client.getTokenSilently(...p);
+  const getTokenWithPopup = (...p) => auth0Client.getTokenWithPopup(...p);
 
   const handleRedirectCallback = async () => {
     setLoading(true);
@@ -86,7 +90,10 @@ export const AuthProvider = ({ children }) => {
   }, [auth0Client]);
   useEffect(() => {
     if (user) {
-      dispatch(userReceived(user));
+      dispatch(userReceived(user).setMeta({ record: true }));
+      auth0Client?.getTokenSilently().then((token) => {
+        localStorage.setItem("token", token);
+      });
     }
   }, [user]);
 
@@ -99,10 +106,10 @@ export const AuthProvider = ({ children }) => {
         popupOpen,
         loginWithPopup,
         handleRedirectCallback,
-        getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
-        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
-        getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
-        getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
+        getIdTokenClaims,
+        loginWithRedirect,
+        getTokenSilently,
+        getTokenWithPopup,
         logout,
       }}
     >
