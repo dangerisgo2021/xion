@@ -22,8 +22,8 @@ export const createBrowserClient = ({ initialState, uri }) => {
       headers: {
         ...headers,
         authorization: `Bearer ${localStorage.getItem("token")}` || undefined,
-        sessionId: session.id,
-        clientId: session.clientId,
+        session: session.id,
+        client: session.clientId,
       },
     }));
 
