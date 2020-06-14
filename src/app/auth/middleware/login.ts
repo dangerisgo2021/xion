@@ -1,13 +1,21 @@
 import { menuItemClicked } from "app/avatar/actions";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
-import { getAuthClient } from "../AuthProvider";
+import { getAuthClient } from "app/auth/AuthProvider";
+import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
+import { loginMutation } from "app/auth/mutations/loginMutation";
 export const login = createWatcherMiddleware({
   actionType: menuItemClicked.type,
   postReducer: true,
-  execute: ({ action }) => {
+  execute: async ({ action }) => {
     const authClient = getAuthClient();
     if (action?.payload?.id === "login") {
-      authClient.loginWithPopup();
+      const user = await authClient.loginWithPopup();
+
+      if (user) {
+        apolloClient.mutate({
+          mutation: loginMutation,
+        });
+      }
     }
   },
 });

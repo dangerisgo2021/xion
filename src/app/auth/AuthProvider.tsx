@@ -67,6 +67,8 @@ export const AuthProvider = ({ children }) => {
     const user = await auth0Client.getUser();
     setUser(user);
     setIsAuthenticated(true);
+
+    return user;
   };
   const logout = (...p) => auth0Client.logout(...p);
   const getIdTokenClaims = (...p) => auth0Client.getIdTokenClaims(...p);
