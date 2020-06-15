@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { userReceived } from "./actions";
 
 let _authClient = null;
-
 const setAuthClient = (authClient) => {
   _authClient = authClient;
 };
