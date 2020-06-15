@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 import { Content } from "./Content";
 
 export const AppLayout = ({ children }) => (
-  <Layout>
+  <Layout hasSider={true}>
     <Sider />
     <Layout>
       <Header />
