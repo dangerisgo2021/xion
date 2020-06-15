@@ -10,7 +10,7 @@ if (isServer) {
 
 export let apolloClient = null;
 const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
-
+console.log({ anv: process.env.NEXT_PUBLIC_GRAPHQL_URL, GRAPHQL_URL });
 export const initGraphqlClient = (initialState) => {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
