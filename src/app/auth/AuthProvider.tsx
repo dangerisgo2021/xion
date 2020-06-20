@@ -9,7 +9,7 @@ let _authClient = null;
 const setAuthClient = (authClient) => {
   _authClient = authClient;
 };
-console.log({auth0Config})
+
 export const getAuthClient = () => _authClient;
 const isClient = process.browser;
 const onRedirectCallback = (appState) => {
