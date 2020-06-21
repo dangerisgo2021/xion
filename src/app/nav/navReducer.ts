@@ -5,6 +5,7 @@ export const navReducer = new ReducerBuilder()
     items: {
       home: { href: "/", displayText: "Home", id: "home" },
       profile: { href: "/profile", displayText: "Profile", id: "profile" },
+      catalog: { href: "/catalog", displayText: "Catalog", id: "catalog" },
     },
   })
   .build();

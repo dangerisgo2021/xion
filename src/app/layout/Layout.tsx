@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 import { Content } from "./Content";
 
 export const AppLayout = ({ children }) => (
-  <Layout hasSider={true}>
+  <Layout hasSider={true} style={{ minHeight: "100vh" }}>
     <Sider />
     <Layout>
       <Header />
