@@ -17,11 +17,13 @@ export const createBrowserClient = ({ initialState, uri }) => {
     const session = getSession(
       (window as any)?.__NEXT_REDUX_STORE__?.getState()
     );
-
+    const token = localStorage.getItem("token");
     operation.setContext(({ headers = {} }) => ({
       headers: {
         ...headers,
-        authorization: `Bearer ${localStorage.getItem("token")}` || undefined,
+        ...(token
+          ? { authorization: `Bearer ${localStorage.getItem("token")}` }
+          : {}),
         session: session.id,
         client: session.clientId,
       },
