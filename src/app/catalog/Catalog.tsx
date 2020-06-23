@@ -1,6 +1,7 @@
 import React from "react";
 import { Breadcrumb, Layout, Typography, List, Card } from "antd";
 import { useCatalogContainer } from "./useCatalogContainer";
+import Link from "next/link";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -30,9 +31,15 @@ export const Catalog = () => {
           }}
           loading={loading}
           dataSource={vendors}
-          renderItem={(item) => (
+          renderItem={(vendor) => (
             <List.Item>
-              <Card title={item?.["name"]}>Card content</Card>
+              <Link href={`/catalog/vendor/${vendor?.["id"]}`}>
+                <a>
+                  <Card title={vendor?.["name"]} hoverable>
+                    Card content
+                  </Card>
+                </a>
+              </Link>
             </List.Item>
           )}
         />
