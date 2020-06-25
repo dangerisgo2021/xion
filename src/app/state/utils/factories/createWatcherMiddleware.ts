@@ -6,7 +6,6 @@ export const createWatcherMiddleware = ({
   context = {},
 }) => {
   return (store) => (next) => (action) => {
-    console.log("watcher called", { action, actionType });
     if (action.type !== actionType) {
       next(action);
     } else if (action.type === actionType) {
