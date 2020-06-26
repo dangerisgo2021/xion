@@ -1,16 +1,20 @@
-import { menuItemClicked } from "app/avatar/actions";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
-import { getAuthClient } from "app/auth/AuthProvider";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { addFormMutation } from "app/forms/mutations/addFormMutation";
-import { addFormClicked } from "../actions";
+import { addFormOkClicked } from "../actions";
+import { pick } from "lodash";
 
 export const addForm = createWatcherMiddleware({
-  actionType: addFormClicked.type,
+  actionType: addFormOkClicked.type,
   postReducer: true,
   execute: async ({ action }) => {
     apolloClient.mutate({
       mutation: addFormMutation,
+      variables: {
+        ...pick(action.payload, ["name"]),
+        limit: 10,
+      },
+      refetchQueries: ["formsQuery"],
     });
   },
 });

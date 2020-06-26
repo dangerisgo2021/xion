@@ -2,7 +2,17 @@ import { actionCreatorFactory } from "app/state/utils/factories/actionCreatorFac
 
 const namespace = "forms";
 
-export const addFormClicked = actionCreatorFactory({
+export const addFormButtonClicked = actionCreatorFactory({
   namespace,
-  type: "addFormClicked",
+  type: "addFormButtonClicked",
+});
+
+export const addFormOkClicked = actionCreatorFactory({
+  namespace,
+  type: "addFormOkClicked",
+});
+
+export const addFormCancelClicked = actionCreatorFactory({
+  namespace,
+  type: "addFormCancelClicked",
 });

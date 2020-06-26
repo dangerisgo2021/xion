@@ -8,7 +8,15 @@ const { Header, Content } = Layout;
 const { Title } = Typography;
 
 export const Forms = () => {
-  const { loading, tableData, columns, onAddFormClick } = useFormsContainer();
+  const {
+    loading,
+    tableData,
+    columns,
+    onAddFormButtonClick,
+    onAddFormOkClick,
+    onAddFormCancelClick,
+    isFormModalVisible,
+  } = useFormsContainer();
 
   //add some handling of null id on form
   return (
@@ -21,7 +29,7 @@ export const Forms = () => {
       </Header>
 
       <Content style={{ padding: "1vw" }}>
-        <Button onClick={onAddFormClick} type="primary">
+        <Button type="primary" onClick={onAddFormButtonClick}>
           Add a form
         </Button>
         <Table
@@ -32,7 +40,11 @@ export const Forms = () => {
           dataSource={tableData}
           rowKey="id"
         />
-        <AddFormModal visible={false} />
+        <AddFormModal
+          visible={isFormModalVisible}
+          onOk={onAddFormOkClick}
+          onCancel={onAddFormCancelClick}
+        />
       </Content>
     </Layout>
   );

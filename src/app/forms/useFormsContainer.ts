@@ -1,7 +1,12 @@
 import { useQuery } from "@apollo/client";
 import { formsQuery } from "./queries/formsQuery";
 import { useDispatch } from "react-redux";
-import { addFormClicked } from "./actions";
+import {
+  addFormButtonClicked,
+  addFormCancelClicked,
+  addFormOkClicked,
+} from "./actions";
+import React from "react";
 
 const columns = [
   {
@@ -26,15 +31,28 @@ const gridConfig = {
   xxl: 3,
 };
 export const useFormsContainer = () => {
-  const { data, error, loading } = useQuery(formsQuery);
+  const [isFormModalVisible, setIsFormModalVisible] = React.useState(false);
+  const { data, error, loading } = useQuery(formsQuery, {
+    variables: { limit: 0 },
+  });
   const dispatch = useDispatch();
   return {
+    isFormModalVisible,
     gridConfig,
     tableData: data?.forms?.entries ?? [],
     error,
     loading,
-    onAddFormClick: () => {
-      dispatch(addFormClicked());
+    onAddFormOkClick: (values) => {
+      dispatch(addFormOkClicked(values));
+      setIsFormModalVisible(false);
+    },
+    onAddFormCancelClick: () => {
+      dispatch(addFormCancelClicked());
+      setIsFormModalVisible(false);
+    },
+    onAddFormButtonClick: () => {
+      dispatch(addFormButtonClicked());
+      setIsFormModalVisible(true);
     },
     columns,
   };
