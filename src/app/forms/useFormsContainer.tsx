@@ -5,21 +5,12 @@ import {
   addFormButtonClicked,
   addFormCancelClicked,
   addFormOkClicked,
+  formEditClicked,
 } from "./actions";
 import React from "react";
-
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "ID",
-    dataIndex: "id",
-    key: "id",
-  },
-];
+import { Button } from "antd";
+import { EditOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const gridConfig = {
   gutter: 16,
@@ -36,6 +27,40 @@ export const useFormsContainer = () => {
     variables: { limit: 0 },
   });
   const dispatch = useDispatch();
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => {
+        console.log({ text, record });
+        return (
+          <Button
+            size="middle"
+            type="primary"
+            onClick={() => {
+              dispatch(formEditClicked());
+            }}
+          >
+            <Link href={`/forms/${record.id}`}>
+              <a>
+                Edit <EditOutlined />
+              </a>
+            </Link>
+          </Button>
+        );
+      },
+    },
+  ];
   return {
     isFormModalVisible,
     gridConfig,

@@ -16,3 +16,18 @@ export const addFormCancelClicked = actionCreatorFactory({
   namespace,
   type: "addFormCancelClicked",
 });
+
+export const formEditClicked = actionCreatorFactory({
+  namespace,
+  type: "formEditClicked",
+});
+
+export const saveFormValidated = actionCreatorFactory({
+  namespace,
+  type: "saveFormValidated",
+});
+
+export const saveFormValidationFailed = actionCreatorFactory({
+  namespace,
+  type: "saveFormValidationFailed",
+});

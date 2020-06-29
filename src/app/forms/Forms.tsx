@@ -34,11 +34,12 @@ export const Forms = () => {
         </Button>
         <Table
           style={{ padding: "1vw 0" }}
-          title={() => "Forms"}
+          title={() => <h2>Forms</h2>}
           loading={loading}
           columns={columns}
           dataSource={tableData}
           rowKey="id"
+          pagination={{ position: ["topLeft", "bottomLeft"], pageSize: 5 }}
         />
         <AddFormModal
           visible={isFormModalVisible}

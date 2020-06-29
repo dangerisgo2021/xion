@@ -6,8 +6,6 @@ export const formsQuery = gql`
       entries {
         id
         name
-        created
-        updated
       }
     }
   }
