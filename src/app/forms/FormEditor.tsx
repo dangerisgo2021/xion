@@ -28,7 +28,7 @@ export const FormEditor = () => {
     onFinish,
     onFinishFailed,
   } = useFormEditorContainer();
-  console.log({ form });
+
   return (
     <Layout>
       <Header style={{ background: "#fff", padding: "0 1vw" }}>
