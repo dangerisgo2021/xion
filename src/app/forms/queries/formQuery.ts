@@ -7,6 +7,13 @@ export const formQuery = gql`
       name
       created
       updated
+      fields {
+        type
+        label
+        order
+        required
+        name
+      }
     }
   }
 `;

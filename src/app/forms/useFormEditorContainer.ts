@@ -1,3 +1,4 @@
+import { pick } from "lodash";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { formQuery } from "./queries/formQuery";
@@ -11,17 +12,17 @@ export const useFormEditorContainer = () => {
   const { data, error, loading } = useQuery(formQuery, {
     variables: { id: formId },
   });
+  const form = pick(data?.form, ["name", "fields", "id"]);
 
-  const form = data?.form;
   return {
     form,
     error,
     loading,
     onFinish: (values) => {
-      dispatch(saveFormValidated({ form: values }));
+      dispatch(saveFormValidated({ form: { id: formId, ...values } }));
     },
     onFinishFailed: (values) => {
-      dispatch(saveFormValidationFailed({ form: values }));
+      dispatch(saveFormValidationFailed({ form: { id: formId, ...values } }));
     },
   };
 };

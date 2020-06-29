@@ -22,7 +22,12 @@ const { Title } = Typography;
 
 //TODO make fields a table
 export const FormEditor = () => {
-  const { loading, form, onFinish, onFinishFailed } = useFormEditorContainer();
+  const {
+    loading,
+    form,
+    onFinish,
+    onFinishFailed,
+  } = useFormEditorContainer();
   console.log({ form });
   return (
     <Layout>
@@ -47,7 +52,7 @@ export const FormEditor = () => {
               name="editor"
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
-              initialValues={{ name: form.name }}
+              initialValues={{ name: form?.name, fields: form?.fields ?? [] }}
             >
               <Title level={4}> Form Name </Title>
               <Form.Item
@@ -107,7 +112,6 @@ export const FormEditor = () => {
                               label="type"
                               style={{ margin: ".5vw" }}
                               required
-                              initialValue="text"
                               rules={[
                                 {
                                   required: true,
@@ -116,12 +120,19 @@ export const FormEditor = () => {
                               ]}
                             >
                               <Select style={{ width: "100px" }}>
-                                <Select.Option value="text">Text</Select.Option>
-                                <Select.Option value="number">
+                                {/*get options from query*/}
+                                <Select.Option value="TEXT">Text</Select.Option>
+                                <Select.Option value="TEXT_AREA">
+                                  Text Area
+                                </Select.Option>
+                                <Select.Option value="NUMERIC">
                                   Number
                                 </Select.Option>
-                                <Select.Option value="calendar">
+                                <Select.Option value="CALENDAR">
                                   Calendar
+                                </Select.Option>{" "}
+                                <Select.Option value="SELECT">
+                                  SELECT
                                 </Select.Option>
                               </Select>
                             </Form.Item>
