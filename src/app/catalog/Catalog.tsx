@@ -35,9 +35,7 @@ export const Catalog = () => {
             <List.Item>
               <Link href={`/catalog/vendor/${vendor?.["id"]}`}>
                 <a>
-                  <Card title={vendor?.["name"]} hoverable>
-                    Card content
-                  </Card>
+                  <Card title={vendor?.["name"]} hoverable />
                 </a>
               </Link>
             </List.Item>

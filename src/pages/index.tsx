@@ -1,5 +1,5 @@
 import * as React from "react";
 
-import { Home } from "app/home/Home";
+import { ActiveOrders } from "app/orders/ActiveOrders";
 
-export default Home;
+export default ActiveOrders;
