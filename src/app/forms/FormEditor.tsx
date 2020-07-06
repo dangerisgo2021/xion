@@ -2,33 +2,31 @@ import React from "react";
 import {
   Breadcrumb,
   Button,
-  Checkbox,
+  Card,
   Col,
   Divider,
   Form,
   Input,
-  InputNumber,
   Layout,
   Row,
-  Select,
   Skeleton,
   Typography,
 } from "antd";
 import { useFormEditorContainer } from "./useFormEditorContainer";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { FormFieldName } from "./FormFieldName";
+import { FormFieldLabel } from "./FormFieldLabel";
+import { FormFieldOrder } from "./FormFieldOrder";
+import { FormFieldType } from "./FormFieldType";
+import { FormFieldRequired } from "./FormFieldRequired";
+import { SelectOptionsEditor } from "./SelectOptionsEditor";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
 //TODO make fields a table
 export const FormEditor = () => {
-  const {
-    loading,
-    form,
-    onFinish,
-    onFinishFailed,
-  } = useFormEditorContainer();
-
+  const { loading, form, onFinish, onFinishFailed } = useFormEditorContainer();
   return (
     <Layout>
       <Header style={{ background: "#fff", padding: "0 1vw" }}>
@@ -65,97 +63,38 @@ export const FormEditor = () => {
                 <Input />
               </Form.Item>
               <Title level={4}> Form Fields </Title>
+
               <Form.List name="fields">
                 {(fields, { add, remove }) => {
                   return (
                     <Col>
                       {fields.map((field) => {
+                        const formField = form?.fields?.[field.name];
                         return (
-                          <Row key={field.key} align="middle">
-                            <Form.Item
-                              name={[field.name, "name"]}
-                              label="name"
-                              style={{ margin: ".5vw" }}
-                              required
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Please input name",
-                                },
-                              ]}
-                            >
-                              <Input />
-                            </Form.Item>
-                            <Form.Item
-                              name={[field.name, "label"]}
-                              label="label"
-                              style={{ margin: ".5vw" }}
-                              required
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Please input label",
-                                },
-                              ]}
-                            >
-                              <Input />
-                            </Form.Item>
-                            <Form.Item
-                              name={[field.name, "order"]}
-                              label="order"
-                              style={{ margin: ".5vw" }}
-                            >
-                              <InputNumber min={0} />
-                            </Form.Item>
-                            <Form.Item
-                              name={[field.name, "type"]}
-                              label="type"
-                              style={{ margin: ".5vw" }}
-                              required
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Please input type",
-                                },
-                              ]}
-                            >
-                              <Select style={{ width: "100px" }}>
-                                {/*get options from query*/}
-                                <Select.Option value="TEXT">Text</Select.Option>
-                                <Select.Option value="TEXT_AREA">
-                                  Text Area
-                                </Select.Option>
-                                <Select.Option value="NUMERIC">
-                                  Number
-                                </Select.Option>
-                                <Select.Option value="CALENDAR">
-                                  Calendar
-                                </Select.Option>{" "}
-                                <Select.Option value="SELECT">
-                                  SELECT
-                                </Select.Option>
-                              </Select>
-                            </Form.Item>
-                            <Form.Item
-                              name={[field.name, "required"]}
-                              valuePropName="checked"
-                              style={{ margin: ".5vw" }}
-                            >
-                              <Checkbox>Required</Checkbox>
-                            </Form.Item>
-                            <Form.Item style={{ margin: "0" }}>
+                          <Card
+                            key={field.key}
+                            actions={[
                               <Button
                                 type="dashed"
-                                shape="circle"
                                 onClick={() => {
                                   remove(field.name);
                                 }}
-                                block
                               >
-                                <MinusOutlined />
-                              </Button>
-                            </Form.Item>
-                          </Row>
+                                Remove <MinusOutlined />
+                              </Button>,
+                            ]}
+                          >
+                            <Row align="middle" justify="space-between">
+                              <FormFieldName field={field} />
+                              <FormFieldLabel field={field} />
+                              <FormFieldOrder field={field} />
+                              <FormFieldType field={field} />
+                              <FormFieldRequired field={field} />
+                            </Row>
+                            {formField?.type === "SELECT" && (
+                              <SelectOptionsEditor field={field} />
+                            )}
+                          </Card>
                         );
                       })}
                       <Divider style={{ color: "black" }} />

@@ -8,11 +8,17 @@ export const formQuery = gql`
       created
       updated
       fields {
-        type
         label
+        name
         order
         required
-        name
+        selectConfig {
+          options {
+            text
+            value
+          }
+        }
+        type
       }
     }
   }

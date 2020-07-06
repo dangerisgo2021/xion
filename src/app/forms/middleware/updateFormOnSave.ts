@@ -9,7 +9,7 @@ export const updateFormOnSave = createWatcherMiddleware({
   actionType: saveFormValidated.type,
   postReducer: true,
   execute: async ({ action }) => {
-    apolloClient
+        apolloClient
       .mutate({
         mutation: updateFormMutation,
         variables: {
@@ -17,7 +17,14 @@ export const updateFormOnSave = createWatcherMiddleware({
             id: action?.payload?.form?.id,
             name: action?.payload?.form?.name,
             fields: action?.payload?.form?.fields?.map((field) =>
-              pick(field, ["label", "name", "order", "required", "type"])
+              pick(field, [
+                "label",
+                "name",
+                "order",
+                "required",
+                "type",
+                "selectConfig",
+              ])
             ),
           },
         },
