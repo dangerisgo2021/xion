@@ -1,8 +1,14 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { vendorCatalogItemsQuery } from "./queries/vendorCatalogItemsQuery";
-import { string } from "prop-types";
-import { stringify } from "querystring";
+import React from "react";
+
+import { useDispatch } from "react-redux";
+import {
+  addCatalogItemCancelClicked,
+  addCatalogItemClicked,
+  addCatalogItemOkClicked,
+} from "./actions";
 
 const columns = [
   {
@@ -25,9 +31,14 @@ export const useVendorCatalogContainer = () => {
   const { data, error, loading } = useQuery(vendorCatalogItemsQuery, {
     variables: { vendorId },
   });
+  const dispatch = useDispatch();
+  const [
+    isAddCatalogItemModalVisible,
+    setIsAddCatalogItemModalVisible,
+  ] = React.useState(false);
 
   const catalogItems = data?.catalogItems?.entries ?? [];
-  const vendor = data?.vendor ?? { name: "N / A"};
+  const vendor = data?.vendor ?? { name: "N / A" };
   const tableData = catalogItems?.map(mapCatalogItemsToTable);
 
   return {
@@ -37,6 +48,20 @@ export const useVendorCatalogContainer = () => {
     catalogItems,
     columns,
     tableData,
-    vendor
+    vendor,
+    isAddCatalogItemModalVisible,
+    onAddCatalogItemClick: () => {
+      dispatch(addCatalogItemClicked());
+      setIsAddCatalogItemModalVisible(true);
+    },
+    onAddCatalogItemOkClick: (values) => {
+      dispatch(addCatalogItemOkClicked({ ...values, vendor }));
+      setIsAddCatalogItemModalVisible(false);
+    },
+    onAddCatalogItemCancelClick: () => {
+      dispatch(addCatalogItemCancelClicked());
+      setIsAddCatalogItemModalVisible(false);
+    },
+
   };
 };
