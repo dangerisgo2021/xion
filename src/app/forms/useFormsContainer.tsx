@@ -42,7 +42,6 @@ export const useFormsContainer = () => {
       title: "Action",
       key: "action",
       render: (text, record) => {
-        console.log({ text, record });
         return (
           <Button
             size="middle"

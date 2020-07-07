@@ -5,7 +5,8 @@ import { login } from "app/auth/middleware/login";
 import { logout } from "app/auth/middleware/logout";
 import { addForm } from "app/forms/middleware/addForm";
 import { updateFormOnSave } from "app/forms/middleware/updateFormOnSave";
-import { addCatalogItem } from "../catalog/middleware/addCatalogItem";
+import { addCatalogItem } from "app/catalog/middleware/addCatalogItem";
+import { sendCatalogItemEditOnOk } from "app/catalog/middleware/sendCatalogItemEditOnOk";
 
 export const middleware = [
   throttle,
@@ -16,4 +17,5 @@ export const middleware = [
   addForm,
   updateFormOnSave,
   addCatalogItem,
+  sendCatalogItemEditOnOk,
 ];

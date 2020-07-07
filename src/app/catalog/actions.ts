@@ -16,3 +16,28 @@ export const addCatalogItemCancelClicked = actionCreatorFactory({
   namespace,
   type: "addCatalogItemCancelClicked",
 });
+
+export const editCatalogItemClicked = actionCreatorFactory({
+  namespace,
+  type: "editCatalogItemClicked",
+});
+
+export const editCatalogItemOkClicked = actionCreatorFactory({
+  namespace,
+  type: "editCatalogItemOkClicked",
+});
+
+export const editCatalogItemCancelClicked = actionCreatorFactory({
+  namespace,
+  type: "editCatalogItemCancelClicked",
+});
+
+export const editCatalogItemFormValidated = actionCreatorFactory({
+  namespace,
+  type: "editCatalogItemFormValidated",
+});
+
+export const editCatalogItemFormValidationFailed = actionCreatorFactory({
+  namespace,
+  type: "editCatalogItemFormValidationFailed",
+});
