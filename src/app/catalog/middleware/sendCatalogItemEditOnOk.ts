@@ -1,4 +1,5 @@
 import { message } from "antd";
+import { pick } from "lodash";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { updateCatalogItemMutation } from "app/catalog/mutations/updateCatalogItemMutation";
@@ -12,10 +13,16 @@ export const sendCatalogItemEditOnOk = createWatcherMiddleware({
       .mutate({
         mutation: updateCatalogItemMutation,
         variables: {
-          input: {
-            id: action?.payload?.catalogItem?.id,
-            name: action?.payload?.catalogItem?.name,
-          },
+          input: pick(action?.payload?.catalogItem, [
+            "id",
+            "name",
+            "active",
+            "order",
+            "imageUrl",
+            "videoUrl",
+            "shortDescription",
+            "price",
+          ]),
         },
         refetchQueries: ["vendorCategoryItemsQuery"],
       })

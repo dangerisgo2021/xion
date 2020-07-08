@@ -10,6 +10,15 @@ export const vendorCatalogItemsQuery = gql`
       entries {
         id
         name
+        active
+        order
+        imageUrl
+        videoUrl
+        price {
+          amount
+          currency
+        }
+        shortDescription
       }
     }
   }
