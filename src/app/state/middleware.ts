@@ -9,6 +9,7 @@ import { addCatalogItem } from "app/catalog/middleware/addCatalogItem";
 import { sendCatalogItemEditOnOk } from "app/catalog/middleware/sendCatalogItemEditOnOk";
 import { registerVendor } from "../catalog/middleware/registerVendor";
 import { cancelActiveOrder } from "../orders/middleware/cancelActiveOrder";
+import { completeActiveOrder } from "../orders/middleware/completeActiveOrder";
 
 export const middleware = [
   throttle,
@@ -22,4 +23,5 @@ export const middleware = [
   sendCatalogItemEditOnOk,
   registerVendor,
   cancelActiveOrder,
+  completeActiveOrder,
 ];
