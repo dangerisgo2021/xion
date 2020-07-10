@@ -1,13 +1,30 @@
 import React from "react";
-import { Breadcrumb, Layout, Typography, List, Card } from "antd";
+import {
+  Breadcrumb,
+  Layout,
+  Typography,
+  List,
+  Card,
+  Button,
+  Space,
+} from "antd";
 import { useCatalogContainer } from "./useCatalogContainer";
 import Link from "next/link";
+import { AddVendorModal } from "./AddVendorModal";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
 export const Catalog = () => {
-  const { vendors, loading } = useCatalogContainer();
+  const {
+    gridConfig,
+    vendors,
+    loading,
+    isAddVendorModalVisible,
+    onAddVendorOkClick,
+    onAddVendorCanceled,
+    onAddVendorButtonClick,
+  } = useCatalogContainer();
 
   return (
     <Layout>
@@ -19,16 +36,14 @@ export const Catalog = () => {
       </Header>
 
       <Content style={{ padding: "1vw" }}>
+        <Space style={{ margin: " 1vw 0" }}>
+          <Button type="primary" onClick={onAddVendorButtonClick}>
+            Add Vendor
+          </Button>
+        </Space>
+
         <List
-          grid={{
-            gutter: 8,
-            xs: 1,
-            sm: 2,
-            md: 3,
-            lg: 3,
-            xl: 6,
-            xxl: 3,
-          }}
+          grid={gridConfig}
           loading={loading}
           dataSource={vendors}
           renderItem={(vendor) => (
@@ -40,6 +55,11 @@ export const Catalog = () => {
               </Link>
             </List.Item>
           )}
+        />
+        <AddVendorModal
+          visible={isAddVendorModalVisible}
+          onOk={onAddVendorOkClick}
+          onCancel={onAddVendorCanceled}
         />
       </Content>
     </Layout>

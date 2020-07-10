@@ -1,19 +1,19 @@
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
-import { addFormMutation } from "app/forms/mutations/addFormMutation";
-import { addFormOkClicked } from "../actions";
+import { addVendorOkClicked } from "../actions";
 import { pick } from "lodash";
+import { registerVendorMutation } from "../mutations/registerVendorMutation";
 
-export const addForm = createWatcherMiddleware({
-  actionType: addFormOkClicked.type,
+export const registerVendor = createWatcherMiddleware({
+  actionType: addVendorOkClicked.type,
   postReducer: true,
   execute: async ({ action }) => {
     apolloClient.mutate({
-      mutation: addFormMutation,
+      mutation: registerVendorMutation,
       variables: {
         ...pick(action.payload, ["name"]),
       },
-      refetchQueries: ["formsQuery"],
+      refetchQueries: ["vendorsQuery"],
     });
   },
 });

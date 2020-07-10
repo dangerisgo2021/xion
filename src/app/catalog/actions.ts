@@ -41,3 +41,18 @@ export const editCatalogItemFormValidationFailed = actionCreatorFactory({
   namespace,
   type: "editCatalogItemFormValidationFailed",
 });
+
+export const addVendorButtonClicked = actionCreatorFactory({
+  namespace,
+  type: "addVendorButtonClicked",
+});
+
+export const addVendorCanceled = actionCreatorFactory({
+  namespace,
+  type: "addVendorCanceled",
+});
+
+export const addVendorOkClicked = actionCreatorFactory({
+  namespace,
+  type: "addVendorOkClicked",
+});
