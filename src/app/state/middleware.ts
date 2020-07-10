@@ -8,6 +8,7 @@ import { updateFormOnSave } from "app/forms/middleware/updateFormOnSave";
 import { addCatalogItem } from "app/catalog/middleware/addCatalogItem";
 import { sendCatalogItemEditOnOk } from "app/catalog/middleware/sendCatalogItemEditOnOk";
 import { registerVendor } from "../catalog/middleware/registerVendor";
+import { cancelActiveOrder } from "../orders/middleware/cancelActiveOrder";
 
 export const middleware = [
   throttle,
@@ -20,4 +21,5 @@ export const middleware = [
   addCatalogItem,
   sendCatalogItemEditOnOk,
   registerVendor,
+  cancelActiveOrder,
 ];

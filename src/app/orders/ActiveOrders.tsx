@@ -18,7 +18,12 @@ export const ActiveOrders = () => {
       </Header>
 
       <Content style={{ padding: "1vw" }}>
-        <Table dataSource={orders} columns={columns} loading={loading} />
+        <Table
+          rowKey="id"
+          dataSource={orders}
+          columns={columns}
+          loading={loading}
+        />
       </Content>
     </Layout>
   );
