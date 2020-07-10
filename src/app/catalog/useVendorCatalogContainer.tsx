@@ -41,6 +41,14 @@ export const useVendorCatalogContainer = () => {
   const vendor = data?.vendor ?? { name: "N / A" };
   const tableData = catalogItems?.map(mapCatalogItemsToTable);
   const selectedCatalogItemToEdit = useSelector(getSelectedCatalogItemToEdit);
+  const selectedCatalogItem = catalogItems.find(
+    ({ id }) => id === selectedCatalogItemToEdit
+  );
+
+  const initialValues = {
+    ...selectedCatalogItem,
+    orderForms: selectedCatalogItem?.orderForms.map(({ id }) => id),
+  };
 
   const columns = [
     {
@@ -74,12 +82,12 @@ export const useVendorCatalogContainer = () => {
   ];
   return {
     error,
+    vendor,
     loading,
-    vendorId,
-    catalogItems,
     columns,
     tableData,
-    vendor,
+    catalogItems,
+    initialValues,
     isEditCatalogItemModalVisible,
     isAddCatalogItemModalVisible,
     selectedCatalogItemToEdit,

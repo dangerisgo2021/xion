@@ -22,6 +22,7 @@ export const sendCatalogItemEditOnOk = createWatcherMiddleware({
             "videoUrl",
             "shortDescription",
             "price",
+            "orderForms",
           ]),
         },
         refetchQueries: ["vendorCategoryItemsQuery"],

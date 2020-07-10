@@ -8,13 +8,12 @@ const { Header, Content } = Layout;
 const { Title } = Typography;
 export const VendorCatalog = () => {
   const {
+    vendor,
     columns,
     tableData,
-    vendor,
-    catalogItems,
+    initialValues,
     isAddCatalogItemModalVisible,
     isEditCatalogItemModalVisible,
-    selectedCatalogItemToEdit,
     onAddCatalogItemOkClick,
     onAddCatalogItemClick,
     onAddCatalogItemCancelClick,
@@ -23,10 +22,6 @@ export const VendorCatalog = () => {
     onEditFormValidationFailed,
     onEditFormValidated,
   } = useVendorCatalogContainer();
-
-  const initialValues = catalogItems.find(
-    ({ id }) => id === selectedCatalogItemToEdit
-  );
 
   return (
     <Layout>

@@ -19,6 +19,10 @@ export const vendorCatalogItemsQuery = gql`
           currency
         }
         shortDescription
+        orderForms {
+          id
+          name
+        }
       }
     }
   }
