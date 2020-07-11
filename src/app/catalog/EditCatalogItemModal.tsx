@@ -5,6 +5,7 @@ import CheckBox from "rc-checkbox";
 import { useEditCatalogItemModalContainer } from "./useEditCatalogItemModalContainer";
 
 const { Option } = Select;
+const { TextArea } = Input;
 
 export const EditCatalogItemModal = ({
   initialValues,
@@ -101,7 +102,7 @@ export const EditCatalogItemModal = ({
           <Input />
         </Form.Item>
         <Form.Item name="shortDescription" label="Short Description">
-          <Input />
+          <TextArea />
         </Form.Item>
       </Form>
     </Modal>
