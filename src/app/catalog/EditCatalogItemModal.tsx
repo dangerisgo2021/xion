@@ -1,11 +1,17 @@
 import React from "react";
 
-import { Form, Input, InputNumber, Modal, Select } from "antd";
-import CheckBox from "rc-checkbox";
-import { useEditCatalogItemModalContainer } from "./useEditCatalogItemModalContainer";
+import { Form, Modal } from "antd";
 
-const { Option } = Select;
-const { TextArea } = Input;
+import { useEditCatalogItemModalContainer } from "./useEditCatalogItemModalContainer";
+import { NameInput } from "./EditModalInputs/NameInput";
+import { ActiveInput } from "./EditModalInputs/ActiveInput";
+import { OrderInput } from "./EditModalInputs/OrderInput";
+import { PriceInput } from "./EditModalInputs/PriceInput";
+import { OrderFormsInput } from "./EditModalInputs/OrderFormsInput";
+import { ImageUrlInput } from "./EditModalInputs/ImageUrlInput";
+import { VideoUrlInput } from "./EditModalInputs/VideoUrlInput";
+import { ShortDescriptionInput } from "./EditModalInputs/ShortDescriptionInput";
+import { AdditionalDetailsInput } from "./EditModalInputs/AdditionalDetailsInput";
 
 export const EditCatalogItemModal = ({
   initialValues,
@@ -30,6 +36,7 @@ export const EditCatalogItemModal = ({
       okText="Ok"
       cancelText="Cancel"
       onCancel={onCancel}
+      width={"90vw"}
       onOk={() => {
         onOk();
         const formFields = { ...form.getFieldsValue() }; //not sure why I am losing multi select values when validating
@@ -51,59 +58,15 @@ export const EditCatalogItemModal = ({
         name="name"
         initialValues={initialValues}
       >
-        <Form.Item
-          name="name"
-          label="Name"
-          rules={[
-            {
-              required: true,
-              message: "Name is required",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item name="active" label="Active" valuePropName="checked">
-          <CheckBox />
-        </Form.Item>
-        <Form.Item name="order" label="Order">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item name={["price", "amount"]} label="Price Amount">
-          <InputNumber />
-        </Form.Item>
-
-        <Form.Item name={["price", "currency"]} label="Price Currency">
-          <Select>
-            <Option value="USD">USD</Option>
-            <Option value="CAD">CAD</Option>
-          </Select>
-        </Form.Item>
-
-        {forms && (
-          <Form.Item name="orderForms" label="Order Forms">
-            <Select mode="multiple">
-              {forms.map((form) => {
-                return (
-                  <Option key={form.id} value={form.id}>
-                    {form.name}
-                  </Option>
-                );
-              })}
-            </Select>
-          </Form.Item>
-        )}
-
-        <Form.Item name="imageUrl" label="Image Url">
-          <Input />
-        </Form.Item>
-        <Form.Item name="videoUrl" label="Video Url">
-          <Input />
-        </Form.Item>
-        <Form.Item name="shortDescription" label="Short Description">
-          <TextArea />
-        </Form.Item>
+        <NameInput />
+        <ActiveInput />
+        <OrderInput />
+        <PriceInput />
+        {forms && <OrderFormsInput forms={forms} />}
+        <ImageUrlInput />
+        <VideoUrlInput />
+        <ShortDescriptionInput />
+        <AdditionalDetailsInput />
       </Form>
     </Modal>
   );

@@ -23,6 +23,10 @@ export const vendorCatalogItemsQuery = gql`
           id
           name
         }
+        additionalDetails {
+            title
+            html
+        }
       }
     }
   }
