@@ -8,6 +8,7 @@ import {
   cancelActiveOrderClicked,
 } from "./actions";
 import { ordersSubscription } from "./subscriptions/ordersSubscription";
+import Link from "next/link";
 
 export const useActiveOrdersContainer = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,11 @@ export const useActiveOrdersContainer = () => {
             }}
           >
             Cancel
+          </Button>
+          <Button type="dashed">
+            <Link href={`/order/${record?.id}`}>
+              <a>Update</a>
+            </Link>
           </Button>
         </Space>
       ),
