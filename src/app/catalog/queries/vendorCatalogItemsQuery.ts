@@ -23,9 +23,13 @@ export const vendorCatalogItemsQuery = gql`
           id
           name
         }
+        frontDeskForms {
+          id
+          name
+        }
         additionalDetails {
-            title
-            html
+          title
+          html
         }
       }
     }

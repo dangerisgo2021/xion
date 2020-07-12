@@ -12,6 +12,7 @@ import { ImageUrlInput } from "./EditModalInputs/ImageUrlInput";
 import { VideoUrlInput } from "./EditModalInputs/VideoUrlInput";
 import { ShortDescriptionInput } from "./EditModalInputs/ShortDescriptionInput";
 import { AdditionalDetailsInput } from "./EditModalInputs/AdditionalDetailsInput";
+import { FrontDeskFormsInput } from "./EditModalInputs/FrontDeskFormsInput";
 
 export const EditCatalogItemModal = ({
   initialValues,
@@ -62,7 +63,8 @@ export const EditCatalogItemModal = ({
         <ActiveInput />
         <OrderInput />
         <PriceInput />
-        {forms && <OrderFormsInput forms={forms} />}
+        <OrderFormsInput forms={forms} />
+        <FrontDeskFormsInput forms={forms} />
         <ImageUrlInput />
         <VideoUrlInput />
         <ShortDescriptionInput />

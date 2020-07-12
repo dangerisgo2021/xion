@@ -48,8 +48,9 @@ export const useVendorCatalogContainer = () => {
   const initialValues = {
     ...selectedCatalogItem,
     orderForms: selectedCatalogItem?.orderForms.map(({ id }) => id),
+    frontDeskForms: selectedCatalogItem?.frontDeskForms.map(({ id }) => id),
+    additionalDetails: selectedCatalogItem?.additionalDetails || [],
   };
-
   const columns = [
     {
       title: "Name",

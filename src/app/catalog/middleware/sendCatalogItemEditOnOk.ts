@@ -24,9 +24,9 @@ export const sendCatalogItemEditOnOk = createWatcherMiddleware({
             "price",
             "orderForms",
             "additionalDetails",
+            "frontDeskForms",
           ]),
         },
-        refetchQueries: ["vendorCategoryItemsQuery"],
       })
       .then(() => {
         message.success("Successfully saved");
