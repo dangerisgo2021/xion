@@ -10,7 +10,7 @@ export const NavMenu = () => {
       {navItems.map(({ id, href, displayText }) => (
         <Menu.Item key={id} onClick={onItemClick}>
           <Link href={href}>
-            <span className="nav-text">{displayText}</span>
+            <a className="nav-text">{displayText}</a>
           </Link>
         </Menu.Item>
       ))}

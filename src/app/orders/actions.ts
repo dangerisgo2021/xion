@@ -11,3 +11,13 @@ export const cancelActiveOrderClicked = actionCreatorFactory({
   namespace,
   type: "cancelActiveOrderClicked",
 });
+
+export const frontDeskFormValidated = actionCreatorFactory({
+  namespace,
+  type: "frontDeskFormValidated",
+});
+
+export const frontDeskFormValidationFailed = actionCreatorFactory({
+  namespace,
+  type: "frontDeskFormValidationFailed",
+});
