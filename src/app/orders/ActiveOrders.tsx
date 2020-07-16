@@ -1,21 +1,16 @@
 import React from "react";
-import { Breadcrumb, Layout, Table, Typography } from "antd";
+import { Layout, Table } from "antd";
 import { useActiveOrdersContainer } from "./useActiveOrdersContainer";
+import { Header } from "app/layout/Header";
 
-const { Header, Content } = Layout;
-const { Title } = Typography;
+const { Content } = Layout;
 
 export const ActiveOrders = () => {
   const { orders, loading, columns } = useActiveOrdersContainer();
 
   return (
     <Layout>
-      <Header style={{ background: "#fff", padding: "0 1vw" }}>
-        <Title level={3}>Active Orders</Title>
-        <Breadcrumb>
-          <Breadcrumb.Item>Active Orders</Breadcrumb.Item>
-        </Breadcrumb>
-      </Header>
+      <Header title="Active Orders" breadcrumbs={["Active Orders"]} />
 
       <Content style={{ padding: "1vw" }}>
         <Table

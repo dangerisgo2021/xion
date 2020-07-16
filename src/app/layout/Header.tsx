@@ -14,7 +14,7 @@ export const Header = ({
   return (
     <AntHeader
       className={className}
-      style={{ ...style, paddingLeft: "64px", height: "64px" }}
+      style={{ ...style, paddingLeft: "40px", height: "64px" }}
     >
       <Title level={3}>{title}</Title>
       <Breadcrumb>
