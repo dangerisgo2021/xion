@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Breadcrumb,
   Button,
   Card,
   Col,
@@ -20,22 +19,20 @@ import { FormFieldOrder } from "./FormFieldOrder";
 import { FormFieldType } from "./FormFieldType";
 import { FormFieldRequired } from "./FormFieldRequired";
 import { SelectOptionsEditor } from "./SelectOptionsEditor";
+import { Header } from "app/layout/Header";
 
-const { Header, Content } = Layout;
 const { Title } = Typography;
+const { Content } = Layout;
 
 //TODO make fields a table
 export const FormEditor = () => {
   const { loading, form, onFinish, onFinishFailed } = useFormEditorContainer();
   return (
     <Layout>
-      <Header style={{ background: "#fff", padding: "0 1vw" }}>
-        <Title level={3}>{`Form Editor`}</Title>
-        <Breadcrumb>
-          <Breadcrumb.Item>Forms</Breadcrumb.Item>
-          <Breadcrumb.Item>{form?.name}</Breadcrumb.Item>
-        </Breadcrumb>
-      </Header>
+      <Header
+        title="Form Editor"
+        breadcrumbs={["Forms", ...(form?.name ? [form?.name] : [])]}
+      />
 
       <Content style={{ padding: "1vw" }}>
         <Row>

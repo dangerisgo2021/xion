@@ -1,8 +1,6 @@
 import React from "react";
 import {
-  Breadcrumb,
   Layout,
-  Typography,
   Skeleton,
   Descriptions,
   Card,
@@ -15,10 +13,10 @@ import {
   Col,
 } from "antd";
 import { useOrderDetailsContainer } from "./useOrderDetailsContainer";
+import { Header } from "app/layout/Header";
 const { Option } = Select;
 
-const { Header, Content } = Layout;
-const { Title } = Typography;
+const { Content } = Layout;
 
 const inputMap = {
   TEXT: Input,
@@ -38,14 +36,10 @@ export const OrderDetails = () => {
 
   return (
     <Layout>
-      <Header style={{ background: "#fff", padding: "0 1vw" }}>
-        <Title level={3}>Order Details</Title>
-        <Breadcrumb>
-          <Breadcrumb.Item>Orders</Breadcrumb.Item>
-          <Breadcrumb.Item>{order?.id}</Breadcrumb.Item>
-        </Breadcrumb>
-      </Header>
-
+      <Header
+        title="Order Details"
+        breadcrumbs={["Orders", ...(order?.id ? [order?.id] : [])]}
+      />
       <Content style={{ padding: "1vw" }}>
         {loading ? (
           <Skeleton />

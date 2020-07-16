@@ -19,7 +19,6 @@ export const useActiveOrdersContainer = () => {
   const { data: activeOrderUpdated } = useSubscription(ordersSubscription);
 
   React.useEffect(() => {
-    console.log({ activeOrderUpdated });
     if (activeOrderUpdated) {
       refetch().catch(console.error);
     }

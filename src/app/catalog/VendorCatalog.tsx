@@ -1,11 +1,12 @@
 import React from "react";
-import { Breadcrumb, Button, Layout, Space, Table, Typography } from "antd";
+import { Button, Layout, Space, Table } from "antd";
 import { useVendorCatalogContainer } from "./useVendorCatalogContainer";
 import { AddCatalogItemModal } from "./AddCatalogItemModal";
 import { EditCatalogItemModal } from "./EditCatalogItemModal";
+import { Header } from "app/layout/Header";
 
-const { Header, Content } = Layout;
-const { Title } = Typography;
+const { Content } = Layout;
+
 export const VendorCatalog = () => {
   const {
     vendor,
@@ -25,13 +26,10 @@ export const VendorCatalog = () => {
 
   return (
     <Layout>
-      <Header style={{ background: "#fff", padding: "0 1vw" }}>
-        <Title level={3}>{`${vendor.name} Catalog Items`}</Title>
-        <Breadcrumb>
-          <Breadcrumb.Item>Catalog</Breadcrumb.Item>
-          <Breadcrumb.Item>{vendor.name}</Breadcrumb.Item>
-        </Breadcrumb>
-      </Header>
+      <Header
+        title={`${vendor.name} Catalog Items`}
+        breadcrumbs={["Catalog", vendor.name]}
+      />
 
       <Content style={{ padding: "1vw" }}>
         <Space style={{ marginBottom: ".5em" }}>
