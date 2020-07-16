@@ -10,6 +10,7 @@ export const activeOrdersQuery = gql`
         assignee
         lastName
         roomNumber
+        destination
       }
     }
   }

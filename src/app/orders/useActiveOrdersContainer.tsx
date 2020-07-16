@@ -33,6 +33,10 @@ export const useActiveOrdersContainer = () => {
       title: "Created",
       dataIndex: "created",
       key: "created",
+    },    {
+      title: "Destination",
+      dataIndex: "destination",
+      key: "destination",
     },
     {
       title: "Room Number",
