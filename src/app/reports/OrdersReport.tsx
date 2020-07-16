@@ -1,6 +1,22 @@
 import React from "react";
-import { Space } from "antd";
+import { Table } from "antd";
+import { useOrderReportsContainer } from "./useOrderReportsContainer";
 
 export const OrdersReport = () => {
-  return <Space>Orders Report</Space>;
+  const { orders, loading, columns, limit, total, onPaginationChange } = useOrderReportsContainer();
+
+  return (
+    <Table
+      rowKey="id"
+      dataSource={orders}
+      columns={columns}
+      loading={loading}
+      pagination={{
+        position: ["topLeft", "bottomLeft"],
+        pageSize: limit,
+        total,
+          onChange: onPaginationChange
+      }}
+    />
+  );
 };
