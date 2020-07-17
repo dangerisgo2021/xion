@@ -25,6 +25,7 @@ export const sendCatalogItemEditOnOk = createWatcherMiddleware({
             "orderForms",
             "additionalDetails",
             "frontDeskForms",
+            "tags",
           ]),
         },
       })

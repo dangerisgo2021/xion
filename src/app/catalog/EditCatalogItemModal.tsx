@@ -13,6 +13,7 @@ import { VideoUrlInput } from "./EditModalInputs/VideoUrlInput";
 import { ShortDescriptionInput } from "./EditModalInputs/ShortDescriptionInput";
 import { AdditionalDetailsInput } from "./EditModalInputs/AdditionalDetailsInput";
 import { FrontDeskFormsInput } from "./EditModalInputs/FrontDeskFormsInput";
+import {TagsInput} from "./EditModalInputs/TagsInput";
 
 export const EditCatalogItemModal = ({
   initialValues,
@@ -23,7 +24,7 @@ export const EditCatalogItemModal = ({
   onValidationFailed,
 }) => {
   const [form] = Form.useForm();
-  const { forms } = useEditCatalogItemModalContainer();
+  const { forms, tags } = useEditCatalogItemModalContainer();
 
   React.useEffect(() => {
     if (initialValues) {
@@ -63,6 +64,7 @@ export const EditCatalogItemModal = ({
         <ActiveInput />
         <OrderInput />
         <PriceInput />
+        <TagsInput tags={tags}/>
         <OrderFormsInput forms={forms} />
         <FrontDeskFormsInput forms={forms} />
         <ImageUrlInput />

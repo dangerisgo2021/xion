@@ -14,6 +14,7 @@ export const vendorCatalogItemsQuery = gql`
         order
         imageUrl
         videoUrl
+        tags
         price {
           amount
           currency
