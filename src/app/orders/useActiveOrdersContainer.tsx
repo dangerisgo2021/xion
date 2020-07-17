@@ -2,16 +2,10 @@ import { useQuery, useSubscription } from "@apollo/client";
 import { Button, Space } from "antd";
 import React from "react";
 import { activeOrdersQuery } from "./queries/activeOrdersQuery";
-import { useDispatch } from "react-redux";
-import {
-  completeActiveOrderClicked,
-  cancelActiveOrderClicked,
-} from "./actions";
 import { ordersSubscription } from "./subscriptions/ordersSubscription";
 import Link from "next/link";
 
 export const useActiveOrdersContainer = () => {
-  const dispatch = useDispatch();
   const { data, error, loading, refetch } = useQuery(activeOrdersQuery, {
     variables: { limit: 0 },
   });
@@ -33,7 +27,8 @@ export const useActiveOrdersContainer = () => {
       title: "Created",
       dataIndex: "created",
       key: "created",
-    },    {
+    },
+    {
       title: "Destination",
       dataIndex: "destination",
       key: "destination",
@@ -53,23 +48,7 @@ export const useActiveOrdersContainer = () => {
       key: "action",
       render: (_text, record) => (
         <Space size="middle">
-          <Button
-            type="primary"
-            onClick={() => {
-              dispatch(completeActiveOrderClicked({ id: record?.id }));
-            }}
-          >
-            Complete
-          </Button>
-          <Button
-            type="link"
-            onClick={() => {
-              dispatch(cancelActiveOrderClicked({ id: record?.id }));
-            }}
-          >
-            Cancel
-          </Button>
-          <Button type="dashed">
+          <Button type="primary">
             <Link href={`/order/${record?.id}`}>
               <a>Update</a>
             </Link>

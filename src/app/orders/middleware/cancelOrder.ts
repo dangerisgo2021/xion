@@ -1,17 +1,17 @@
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
-import { completeActiveOrderClicked } from "../actions";
-import { completeOrderMutation } from "../mutations/completeOrderMutation";
+import { cancelOrderClicked } from "../actions";
+import { cancelOrderMutation } from "../mutations/cancelOrderMutation";
 
-export const completeActiveOrder = createWatcherMiddleware({
-  actionType: completeActiveOrderClicked.type,
+export const cancelOrder = createWatcherMiddleware({
+  actionType: cancelOrderClicked.type,
   postReducer: true,
   execute: async ({ action }) => {
     apolloClient.mutate({
-      mutation: completeOrderMutation,
+      mutation: cancelOrderMutation,
       variables: {
         input: {
-          id: action?.payload?.id,
+          id: action?.payload?.orderId,
         },
       },
       refetchQueries: ["activeOrdersQuery"],

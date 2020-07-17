@@ -2,14 +2,14 @@ import { actionCreatorFactory } from "app/state/utils/factories/actionCreatorFac
 
 const namespace = "orders";
 
-export const completeActiveOrderClicked = actionCreatorFactory({
+export const completeOrderClicked = actionCreatorFactory({
   namespace,
-  type: "completeActiveOrderClicked",
+  type: "completeOrderClicked",
 });
 
-export const cancelActiveOrderClicked = actionCreatorFactory({
+export const cancelOrderClicked = actionCreatorFactory({
   namespace,
-  type: "cancelActiveOrderClicked",
+  type: "cancelOrderClicked",
 });
 
 export const frontDeskFormValidated = actionCreatorFactory({

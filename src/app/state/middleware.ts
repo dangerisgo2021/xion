@@ -8,8 +8,8 @@ import { updateFormOnSave } from "app/forms/middleware/updateFormOnSave";
 import { addCatalogItem } from "app/catalog/middleware/addCatalogItem";
 import { sendCatalogItemEditOnOk } from "app/catalog/middleware/sendCatalogItemEditOnOk";
 import { registerVendor } from "../catalog/middleware/registerVendor";
-import { cancelActiveOrder } from "../orders/middleware/cancelActiveOrder";
-import { completeActiveOrder } from "../orders/middleware/completeActiveOrder";
+import { cancelOrder } from "../orders/middleware/cancelOrder";
+import { completeOrder } from "../orders/middleware/completeOrder";
 import { saveFrontDeskFormsMiddleware } from "../orders/middleware/saveFrontDeskFormsMiddleware";
 
 export const middleware = [
@@ -23,7 +23,7 @@ export const middleware = [
   addCatalogItem,
   sendCatalogItemEditOnOk,
   registerVendor,
-  cancelActiveOrder,
-  completeActiveOrder,
+  cancelOrder,
+  completeOrder,
   saveFrontDeskFormsMiddleware,
 ];

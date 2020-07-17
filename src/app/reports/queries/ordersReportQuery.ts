@@ -13,6 +13,10 @@ export const ordersReportQuery = gql`
         assignee
         lastName
         roomNumber
+        total
+        currency
+        completedAt
+        transactionId
       }
     }
   }

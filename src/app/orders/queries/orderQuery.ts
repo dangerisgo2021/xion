@@ -8,6 +8,7 @@ export const orderQuery = gql`
       vendorId
       canceled
       completed
+      completedAt
       created
       lastName
       roomNumber

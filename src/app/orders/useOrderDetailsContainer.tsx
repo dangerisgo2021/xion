@@ -5,6 +5,8 @@ import React from "react";
 import { orderQuery } from "./queries/orderQuery";
 import { useDispatch } from "react-redux";
 import {
+  cancelOrderClicked,
+  completeOrderClicked,
   frontDeskFormValidated,
   frontDeskFormValidationFailed,
 } from "./actions";
@@ -45,6 +47,12 @@ export const useOrderDetailsContainer = () => {
     },
     onValidationFailed: (formValues) => {
       dispatch(frontDeskFormValidationFailed({ orderId, formValues }));
+    },
+    onCancelClicked: (orderId) => {
+      dispatch(cancelOrderClicked({ orderId }));
+    },
+    onCompletedClicked: (orderId) => {
+      dispatch(completeOrderClicked({ orderId }));
     },
   };
 };
