@@ -32,6 +32,12 @@ export const vendorCatalogItemsQuery = gql`
           title
           html
         }
+        socialMediaLinks {
+          icon
+          link
+          color
+          text
+        }
       }
     }
   }

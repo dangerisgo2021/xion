@@ -4,12 +4,12 @@ import { Button, Card, Col, Form, Input, Row } from "antd";
 
 const { TextArea } = Input;
 
-export const AdditionalDetailsInput = () => (
-  <Form.List name="additionalDetails">
+export const SocialMediaLinksInput = () => (
+  <Form.List name="socialMediaLinks">
     {(fields, { add, remove }) => {
       return (
         <Card
-          title="Additional Details"
+          title="Social Media Links"
           actions={[
             <Button
               type="primary"
@@ -17,14 +17,14 @@ export const AdditionalDetailsInput = () => (
                 add();
               }}
             >
-              Add Additional Detail
+              Add Social Media Link
             </Button>,
           ]}
         >
           {fields.map((field) => {
             return (
               <Row align="top" gutter={16}>
-                <Col flex={1}>
+                <Col>
                   <Form.Item label="Remove">
                     <Button
                       onClick={() => {
@@ -35,33 +35,62 @@ export const AdditionalDetailsInput = () => (
                     </Button>
                   </Form.Item>
                 </Col>
-                <Col flex={2}>
+                <Col>
                   <Form.Item
-                    name={[field.name, "title"]}
-                    label="Title"
+                    name={[field.name, "color"]}
+                    label="Color"
                     required
                     rules={[
                       {
                         required: true,
-                        message: "Please input title",
+                        message: "Please input color",
                       },
                     ]}
                   >
                     <Input />
+                    {/*<CompactPicker />*/}
                   </Form.Item>
                 </Col>
-                <Col flex={5}>
+                <Col>
                   <Form.Item
-                    name={[field.name, "html"]}
-                    label="html"
+                    name={[field.name, "text"]}
+                    label="text"
                     rules={[
                       {
                         required: true,
-                        message: "Please input html",
+                        message: "Please input text",
                       },
                     ]}
                   >
                     <TextArea />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    name={[field.name, "link"]}
+                    label="Link"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input link",
+                      },
+                    ]}
+                  >
+                    <TextArea />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    name={[field.name, "icon"]}
+                    label="icon"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input icon",
+                      },
+                    ]}
+                  >
+                    <Input />
                   </Form.Item>
                 </Col>
               </Row>

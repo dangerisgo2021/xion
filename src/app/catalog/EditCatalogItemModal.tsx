@@ -14,6 +14,7 @@ import { ShortDescriptionInput } from "./EditModalInputs/ShortDescriptionInput";
 import { AdditionalDetailsInput } from "./EditModalInputs/AdditionalDetailsInput";
 import { FrontDeskFormsInput } from "./EditModalInputs/FrontDeskFormsInput";
 import {TagsInput} from "./EditModalInputs/TagsInput";
+import {SocialMediaLinksInput} from "./EditModalInputs/SocialMediaLinksInput";
 
 export const EditCatalogItemModal = ({
   initialValues,
@@ -71,6 +72,7 @@ export const EditCatalogItemModal = ({
         <VideoUrlInput />
         <ShortDescriptionInput />
         <AdditionalDetailsInput />
+        <SocialMediaLinksInput />
       </Form>
     </Modal>
   );
