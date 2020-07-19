@@ -2,6 +2,7 @@ import React from "react";
 import { Layout, Tabs, Card } from "antd";
 import { Header } from "app/layout/Header";
 import { OrdersReport } from "./OrdersReport";
+import { OrdersReportControl } from "./OrdersReportControl";
 
 export const Reports = () => {
   return (
@@ -11,6 +12,7 @@ export const Reports = () => {
         <Card>
           <Tabs defaultActiveKey="1">
             <Tabs.TabPane tab="Orders" key="1">
+              <OrdersReportControl />
               <OrdersReport />
             </Tabs.TabPane>
           </Tabs>
