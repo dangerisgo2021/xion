@@ -10,15 +10,20 @@ export const createWatcherMiddleware = ({
       next(action);
     } else if (action.type === actionType) {
       const state = store.getState();
-
+      const executeArgs = {
+        state,
+        action,
+        context,
+        dispatch: store.dispatch,
+      };
       if (preReducer) {
-        execute({ state, action, context });
+        execute(executeArgs);
       }
 
       next(action);
 
       if (postReducer) {
-        execute({ state, action, context });
+        execute(executeArgs);
       }
     }
   };

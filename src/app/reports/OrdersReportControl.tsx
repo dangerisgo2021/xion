@@ -1,36 +1,36 @@
 import React from "react";
-import {
-  Col,
-  Form,
-  DatePicker,
-  TimePicker,
-  Row,
-  Select,
-  Input,
-  Button,
-} from "antd";
+import { Col, Form, DatePicker, Row, Select, Input, Button } from "antd";
 import { useOrderReportsControlContainer } from "./useOrderReportsControlContainer";
+import moment from "moment";
 const { RangePicker } = DatePicker;
 
 export const OrdersReportControl = () => {
-  const { vendors } = useOrderReportsControlContainer();
+  const { vendors, onFormValidated } = useOrderReportsControlContainer();
 
   return (
-    <Form>
+    <Form onFinish={onFormValidated}>
       <Row gutter={16}>
-        <Col span={8}>
-          <Form.Item name="completedDateRange" label="Completed Date Range">
-            <RangePicker />
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item name="startTime" label="Start Time">
-            <TimePicker />
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item name="endTime" label="End Time">
-            <TimePicker />
+        <Col span={16}>
+          <Form.Item
+            name="completedAtRange"
+            label="Completed Date Range"
+            required
+            rules={[
+              {
+                required: true,
+                message: "Report Time range required",
+              },
+            ]}
+          >
+            <RangePicker
+              showTime={{
+                format: "HH:mm",
+                defaultValue: [
+                  moment.utc().startOf("day"),
+                  moment.utc().endOf("day"),
+                ],
+              }}
+            />
           </Form.Item>
         </Col>
         <Col span={8}>

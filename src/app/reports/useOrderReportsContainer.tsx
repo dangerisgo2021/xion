@@ -1,8 +1,8 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
-import { ordersReportQuery } from "./queries/ordersReportQuery";
 import { Space } from "antd";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { getOrdersReport } from "./selectors/getSelectedCatalogItemToEdit";
 
 const columns = [
   {
@@ -12,7 +12,7 @@ const columns = [
     render: (_text, record) => (
       <Space size="middle">
         <Link href={`/order/${record?.id}`}>
-          <a>{record?.id.slice(0, 5)}</a>
+          <a>{record?.id?.slice(0, 5)}</a>
         </Link>
       </Space>
     ),
@@ -52,27 +52,24 @@ const columns = [
     dataIndex: "transactionId",
     key: "transactionId",
   },
+  {
+    title: "Item Id",
+    dataIndex: "catalogItemId",
+    key: "catalogItemId",
+    render: (_text, record) => (
+      <Space size="middle">{record?.catalogItemId?.slice(0, 5)}</Space>
+    ),
+  },
 ];
 
 const limit = 5;
 
 export const useOrderReportsContainer = () => {
-  const { data, error, loading, refetch } = useQuery(ordersReportQuery, {
-    variables: { limit, start: 0 },
-  });
-
+  const ordersReport = useSelector(getOrdersReport) ?? [];
+  console.log({ ordersReport });
   return {
     limit,
     columns,
-    error,
-    loading,
-    total: data?.orders?.meta?.total,
-    orders: data?.orders?.entries ?? [],
-    onPaginationChange: (page) => {
-      refetch({
-        limit,
-        start: page,
-      }).catch(console.error);
-    },
+    ordersReport,
   };
 };

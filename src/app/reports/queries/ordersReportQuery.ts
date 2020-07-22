@@ -1,22 +1,20 @@
 import { gql } from "@apollo/client";
 
 export const ordersReportQuery = gql`
-  query ordersReportQuery($limit: Int, $start: Int) {
-    orders(input: { limit: $limit, start: $start }) {
-      meta {
-        total
-      }
-      entries {
+  query ordersReportQuery($input: OrdersReportInput) {
+    reports {
+      ordersReport(input: $input) {
         id
         created
-        completed
-        assignee
-        lastName
+        completedAt
         roomNumber
+        firstName
+        lastName
+        catalogItemId
+        transactionId
+        destination
         total
         currency
-        completedAt
-        transactionId
       }
     }
   }

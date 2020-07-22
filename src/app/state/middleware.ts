@@ -11,6 +11,7 @@ import { registerVendor } from "../catalog/middleware/registerVendor";
 import { cancelOrder } from "../orders/middleware/cancelOrder";
 import { completeOrder } from "../orders/middleware/completeOrder";
 import { saveFrontDeskFormsMiddleware } from "../orders/middleware/saveFrontDeskFormsMiddleware";
+import { createOrderReport } from "../reports/middleware/createOrderReport";
 
 export const middleware = [
   throttle,
@@ -26,4 +27,5 @@ export const middleware = [
   cancelOrder,
   completeOrder,
   saveFrontDeskFormsMiddleware,
+  createOrderReport,
 ];

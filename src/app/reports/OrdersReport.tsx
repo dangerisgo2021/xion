@@ -3,19 +3,18 @@ import { Table } from "antd";
 import { useOrderReportsContainer } from "./useOrderReportsContainer";
 
 export const OrdersReport = () => {
-  const { orders, loading, columns, limit, total, onPaginationChange } = useOrderReportsContainer();
-
+  const { ordersReport, columns } = useOrderReportsContainer();
+  console.log({ ordersReport });
   return (
     <Table
       rowKey="id"
-      dataSource={orders}
+      dataSource={ordersReport}
       columns={columns}
-      loading={loading}
       pagination={{
         position: ["topLeft", "bottomLeft"],
-        pageSize: limit,
-        total,
-          onChange: onPaginationChange
+        total: ordersReport?.length,
+        showSizeChanger: true,
+        showTotal: () => ordersReport?.length,
       }}
     />
   );
