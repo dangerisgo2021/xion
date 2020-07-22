@@ -39,6 +39,7 @@ export const saveFrontDeskFormsMiddleware = createWatcherMiddleware({
           forms,
         },
       },
+      refetchQueries: ["orderQuery"],
     });
   },
 });

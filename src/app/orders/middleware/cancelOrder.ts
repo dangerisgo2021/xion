@@ -14,7 +14,7 @@ export const cancelOrder = createWatcherMiddleware({
           id: action?.payload?.orderId,
         },
       },
-      refetchQueries: ["activeOrdersQuery"],
+      refetchQueries: ["activeOrdersQuery", "orderQuery"],
     });
   },
 });
