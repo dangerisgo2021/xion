@@ -1,8 +1,9 @@
+import { pick } from "lodash";
+
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { addFormMutation } from "app/forms/mutations/addFormMutation";
-import { addFormOkClicked } from "../actions";
-import { pick } from "lodash";
+import { addFormOkClicked } from "app/forms/actions";
 
 export const addForm = createWatcherMiddleware({
   actionType: addFormOkClicked.type,

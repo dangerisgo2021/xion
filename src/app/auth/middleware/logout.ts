@@ -1,6 +1,6 @@
 import { menuItemClicked } from "app/avatar/actions";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
-import { getAuthClient } from "../AuthProvider";
+import { getAuthClient } from "app/auth/components/AuthProvider";
 export const logout = createWatcherMiddleware({
   actionType: menuItemClicked.type,
   postReducer: true,

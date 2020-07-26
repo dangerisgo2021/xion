@@ -7,11 +7,11 @@ import { addForm } from "app/forms/middleware/addForm";
 import { updateFormOnSave } from "app/forms/middleware/updateFormOnSave";
 import { addCatalogItem } from "app/catalog/middleware/addCatalogItem";
 import { sendCatalogItemEditOnOk } from "app/catalog/middleware/sendCatalogItemEditOnOk";
-import { registerVendor } from "../catalog/middleware/registerVendor";
-import { cancelOrder } from "../orders/middleware/cancelOrder";
-import { completeOrder } from "../orders/middleware/completeOrder";
-import { saveFrontDeskFormsMiddleware } from "../orders/middleware/saveFrontDeskFormsMiddleware";
-import { createOrderReport } from "../reports/middleware/createOrderReport";
+import { registerVendor } from "app/catalog/middleware/registerVendor";
+import { cancelOrder } from "app/orders/middleware/cancelOrder";
+import { completeOrder } from "app/orders/middleware/completeOrder";
+import { saveFrontDeskFormsMiddleware } from "app/orders/middleware/saveFrontDeskFormsMiddleware";
+import { createOrderReport } from "app/reports/middleware/createOrderReport";
 
 export const middleware = [
   throttle,

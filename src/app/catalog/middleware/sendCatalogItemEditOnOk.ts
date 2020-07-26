@@ -3,7 +3,7 @@ import { pick } from "lodash";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { updateCatalogItemMutation } from "app/catalog/mutations/updateCatalogItemMutation";
-import { editCatalogItemFormValidated } from "../actions";
+import { editCatalogItemFormValidated } from "app/catalog/actions";
 
 export const sendCatalogItemEditOnOk = createWatcherMiddleware({
   actionType: editCatalogItemFormValidated.type,

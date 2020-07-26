@@ -1,8 +1,9 @@
+import { pick } from "lodash";
+
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { addCatalogItemOkClicked } from "app/catalog/actions";
-import { pick } from "lodash";
-import { addCatalogItemMutation } from "../mutations/addCatalogItemMutation";
+import { addCatalogItemMutation } from "app/catalog/mutations/addCatalogItemMutation";
 
 export const addCatalogItem = createWatcherMiddleware({
   actionType: addCatalogItemOkClicked.type,

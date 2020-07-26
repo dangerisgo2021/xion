@@ -1,7 +1,7 @@
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
-import { cancelOrderClicked } from "../actions";
-import { cancelOrderMutation } from "../mutations/cancelOrderMutation";
+import { cancelOrderClicked } from "app/orders/actions";
+import { cancelOrderMutation } from "app/orders/mutations/cancelOrderMutation";
 
 export const cancelOrder = createWatcherMiddleware({
   actionType: cancelOrderClicked.type,

@@ -1,6 +1,6 @@
 import { menuItemClicked } from "app/avatar/actions";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
-import { getAuthClient } from "app/auth/AuthProvider";
+import { getAuthClient } from "app/auth/components/AuthProvider";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { loginMutation } from "app/auth/mutations/loginMutation";
 export const login = createWatcherMiddleware({

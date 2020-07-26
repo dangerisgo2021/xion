@@ -2,7 +2,7 @@ import { set } from "lodash";
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { saveFrontDeskFormMutation } from "app/orders/mutations/saveFrontDeskFormMutation";
-import { frontDeskFormValidated } from "../actions";
+import { frontDeskFormValidated } from "app/orders/actions";
 
 const mapFieldEntry = ([key, value]) => ({
   name: key,

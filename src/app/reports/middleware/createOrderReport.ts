@@ -3,8 +3,8 @@ import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import {
   createOrderReportFormValidated,
   receivedOrdersReport,
-} from "../actions";
-import { ordersReportQuery } from "../queries/ordersReportQuery";
+} from "app/reports/actions";
+import { ordersReportQuery } from "app/reports/queries/ordersReportQuery";
 
 const mapFormValuesToOrdersReportInput = ({ formValues }) => {
   const [start, end] = formValues?.completedAtRange ?? [];

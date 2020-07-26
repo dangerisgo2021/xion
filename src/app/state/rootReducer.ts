@@ -1,10 +1,10 @@
 import ReducerBuilder from "app/state/utils/factories/ReducerBuilder";
-import { authReducer } from "app/auth/authReducer";
-import { navReducer } from "app/nav/navReducer";
-import { sessionReducer } from "app/session/sessionReducer";
-import { avatarReducer } from "app/avatar/avatarReducer";
-import { catalogReducer } from "app/catalog/catalogReducer";
-import { reportsReducer } from "app/reports/reportsReducer";
+import { authReducer } from "app/auth/reducers/authReducer";
+import { navReducer } from "app/nav/reducers/navReducer";
+import { sessionReducer } from "app/session/reducers/sessionReducer";
+import { avatarReducer } from "app/avatar/reducers/avatarReducer";
+import { catalogReducer } from "app/catalog/reducers/catalogReducer";
+import { reportsReducer } from "app/reports/reducers/reportsReducer";
 
 const rootReducerBuilder = new ReducerBuilder()
   .combine("auth", authReducer)

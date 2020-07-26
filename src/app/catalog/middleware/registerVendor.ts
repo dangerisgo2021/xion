@@ -2,7 +2,7 @@ import { createWatcherMiddleware } from "app/state/utils/factories/createWatcher
 import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
 import { addVendorOkClicked } from "../actions";
 import { pick } from "lodash";
-import { registerVendorMutation } from "../mutations/registerVendorMutation";
+import { registerVendorMutation } from "app/catalog/mutations/registerVendorMutation";
 
 export const registerVendor = createWatcherMiddleware({
   actionType: addVendorOkClicked.type,
