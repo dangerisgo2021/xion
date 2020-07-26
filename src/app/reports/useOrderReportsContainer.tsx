@@ -33,6 +33,11 @@ const columns = [
     key: "lastName",
   },
   {
+    title: "First Name",
+    dataIndex: "firstName",
+    key: "firstName",
+  },
+  {
     title: "Total",
     dataIndex: "total",
     key: "total",
