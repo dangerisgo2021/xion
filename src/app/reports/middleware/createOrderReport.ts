@@ -13,6 +13,10 @@ const mapFormValuesToOrdersReportInput = ({ formValues }) => {
     : undefined;
   return {
     completedAtRange,
+    roomNumber: formValues?.roomNumber || undefined,
+    lastName: formValues?.lastName || undefined,
+    firstName: formValues?.firstName || undefined,
+    currency: formValues?.currency || undefined,
   };
 };
 

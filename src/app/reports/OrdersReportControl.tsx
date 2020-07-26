@@ -8,9 +8,17 @@ export const OrdersReportControl = () => {
   const { vendors, onFormValidated } = useOrderReportsControlContainer();
 
   return (
-    <Form onFinish={onFormValidated}>
+    <Form
+      initialValues={{
+        completedAtRange: [
+          moment.utc().startOf("month"),
+          moment.utc().endOf("month"),
+        ],
+      }}
+      onFinish={onFormValidated}
+    >
       <Row gutter={16}>
-        <Col span={16}>
+        <Col span={24}>
           <Form.Item
             name="completedAtRange"
             label="Completed Date Range"
@@ -34,17 +42,6 @@ export const OrdersReportControl = () => {
           </Form.Item>
         </Col>
         <Col span={8}>
-          <Form.Item name="vendors" label="Vendors">
-            <Select mode="multiple" allowClear>
-              {vendors.map((vendor) => (
-                <Select.Option key={vendor?.id} value={vendor?.id}>
-                  {vendor?.name}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col span={8}>
           <Form.Item name="roomNumber" label="Room Number">
             <Input />
           </Form.Item>
@@ -64,6 +61,17 @@ export const OrdersReportControl = () => {
             <Select allowClear>
               <Select.Option value="USD">USD</Select.Option>
               <Select.Option value="CAD">CAD</Select.Option>
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item name="vendors" label="Vendors">
+            <Select mode="multiple" allowClear>
+              {vendors.map((vendor) => (
+                <Select.Option key={vendor?.id} value={vendor?.id}>
+                  {vendor?.name}
+                </Select.Option>
+              ))}
             </Select>
           </Form.Item>
         </Col>

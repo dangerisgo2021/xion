@@ -8,6 +8,7 @@ export const activeOrdersQuery = gql`
         created
         completed
         assignee
+        firstName
         lastName
         roomNumber
         destination

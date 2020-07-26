@@ -66,7 +66,7 @@ const limit = 5;
 
 export const useOrderReportsContainer = () => {
   const ordersReport = useSelector(getOrdersReport) ?? [];
-  console.log({ ordersReport });
+
   return {
     limit,
     columns,
