@@ -1,4 +1,4 @@
 import React from "react";
-import { VendorCatalog } from "../../../app/catalog/VendorCatalog";
+import { VendorCatalog } from "app/catalog/components/VendorCatalog";
 
 export default VendorCatalog;

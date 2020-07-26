@@ -13,10 +13,10 @@ const ApolloProvider = dynamic(
   import("@apollo/client").then(({ ApolloProvider }) => ApolloProvider)
 );
 const AppLayout = dynamic(
-  import("app/layout/Layout").then(({ AppLayout }) => AppLayout)
+  import("app/layout/components/Layout").then(({ AppLayout }) => AppLayout)
 );
 const AuthProvider = dynamic(
-  import("app/auth/AuthProvider").then(({ AuthProvider }) => AuthProvider)
+  import("app/auth/components/AuthProvider").then(({ AuthProvider }) => AuthProvider)
 );
 
 //Root of application where all providers and layout are handle or all pages
