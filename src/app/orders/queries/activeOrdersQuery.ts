@@ -6,6 +6,7 @@ export const activeOrdersQuery = gql`
       entries {
         id
         created
+        updated
         completed
         assignee
         firstName

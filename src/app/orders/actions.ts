@@ -21,3 +21,7 @@ export const frontDeskFormValidationFailed = actionCreatorFactory({
   namespace,
   type: "frontDeskFormValidationFailed",
 });
+export const assignToMeClicked = actionCreatorFactory({
+  namespace,
+  type: "assignToMeClicked",
+});
