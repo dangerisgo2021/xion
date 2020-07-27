@@ -3,7 +3,7 @@ import { Space } from "antd";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { getOrdersReport } from "app/reports/selectors/getSelectedCatalogItemToEdit";
-import { DateTime } from "../../atoms/DateTime";
+import { DateTime } from "app/atoms/DateTime";
 
 const columns = [
   {
