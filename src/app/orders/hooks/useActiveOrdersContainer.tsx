@@ -1,9 +1,11 @@
 import { useQuery, useSubscription } from "@apollo/client";
 import { Button, Space } from "antd";
+import Link from "next/link";
 import React from "react";
+import {DateTime} from "app/atoms/DateTime";
+import { LinkToDetails } from "app/orders/components/LinkToDetails";
 import { activeOrdersQuery } from "app/orders/queries/activeOrdersQuery";
 import { ordersSubscription } from "app/orders/subscriptions/ordersSubscription";
-import Link from "next/link";
 
 export const useActiveOrdersContainer = () => {
   const { data, error, loading, refetch } = useQuery(activeOrdersQuery, {
@@ -22,11 +24,14 @@ export const useActiveOrdersContainer = () => {
       title: "Id",
       dataIndex: "id",
       key: "id",
+      render: (_text, record) => <LinkToDetails id={record?.id} />,
     },
     {
       title: "Created",
       dataIndex: "created",
       key: "created",
+      render: (_text, record) => <DateTime dateTime={record?.created} format="MMM DD h:mm A"/>,
+
     },
     {
       title: "Destination",
@@ -54,6 +59,7 @@ export const useActiveOrdersContainer = () => {
               <a>Update</a>
             </Link>
           </Button>
+          <Button type="dashed">Assign to Me</Button>
         </Space>
       ),
     },

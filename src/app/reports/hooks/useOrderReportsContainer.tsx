@@ -3,6 +3,7 @@ import { Space } from "antd";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { getOrdersReport } from "app/reports/selectors/getSelectedCatalogItemToEdit";
+import { DateTime } from "../../atoms/DateTime";
 
 const columns = [
   {
@@ -21,6 +22,9 @@ const columns = [
     title: "Created",
     dataIndex: "created",
     key: "created",
+    render: (_text, record) => (
+      <DateTime dateTime={record?.created} format="MMM DD h:mm A" />
+    ),
   },
   {
     title: "Room Number",
@@ -51,6 +55,9 @@ const columns = [
     title: "Completed",
     dataIndex: "completedAt",
     key: "completedAt",
+    render: (_text, record) => (
+      <DateTime dateTime={record?.completedAt} format="MMM DD h:mm A" />
+    ),
   },
   {
     title: "Transaction Id",
