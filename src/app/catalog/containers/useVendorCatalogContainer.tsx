@@ -50,6 +50,7 @@ export const useVendorCatalogContainer = () => {
     orderForms: selectedCatalogItem?.orderForms.map(({ id }) => id),
     frontDeskForms: selectedCatalogItem?.frontDeskForms.map(({ id }) => id),
     additionalDetails: selectedCatalogItem?.additionalDetails || [],
+    socialMediaLinks: selectedCatalogItem?.socialMediaLinks || [],
   };
   const columns = [
     {
