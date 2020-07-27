@@ -39,6 +39,12 @@ export const useActiveOrdersContainer = () => {
       key: "roomNumber",
     },
     {
+      title: "Name",
+      key: "name",
+      render: (_text, record) =>
+        `${record?.firstName ?? ""} ${record?.lastName ?? ""}`,
+    },
+    {
       title: "Action",
       key: "action",
       render: (_text, record) => (
@@ -50,12 +56,6 @@ export const useActiveOrdersContainer = () => {
           </Button>
         </Space>
       ),
-    },
-    {
-      title: "Name",
-      key: "name",
-      render: (_text, record) =>
-        `${record?.firstName ?? ""} ${record?.lastName ?? ""}`,
     },
   ];
   return {
