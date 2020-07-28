@@ -4,7 +4,7 @@ import { useOrderReportsContainer } from "app/reports/hooks/useOrderReportsConta
 
 export const OrdersReport = () => {
   const { ordersReport, columns } = useOrderReportsContainer();
-  console.log({ ordersReport });
+
   return (
     <Table
       rowKey="id"

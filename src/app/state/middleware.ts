@@ -12,7 +12,8 @@ import { cancelOrder } from "app/orders/middleware/cancelOrder";
 import { completeOrder } from "app/orders/middleware/completeOrder";
 import { saveFrontDeskFormsMiddleware } from "app/orders/middleware/saveFrontDeskFormsMiddleware";
 import { createOrderReport } from "app/reports/middleware/createOrderReport";
-import { assignOrder } from "../orders/middleware/assignOrder";
+import { assignOrder } from "app/orders/middleware/assignOrder";
+import { getCheckoutSummary } from "app/checkout/middleware/getCheckoutSummary";
 
 export const middleware = [
   throttle,
@@ -30,4 +31,5 @@ export const middleware = [
   saveFrontDeskFormsMiddleware,
   createOrderReport,
   assignOrder,
+  getCheckoutSummary,
 ];
