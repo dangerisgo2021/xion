@@ -16,6 +16,14 @@ export const orderQuery = gql`
       transactionId
       total
       currency
+      formSubmissions {
+        formId
+        formName
+        fields {
+          name
+          valueJsonString
+        }
+      }
       catalogItem {
         name
         updated
