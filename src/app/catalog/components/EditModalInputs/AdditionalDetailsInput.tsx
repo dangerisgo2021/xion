@@ -23,7 +23,7 @@ export const AdditionalDetailsInput = () => (
         >
           {fields.map((field) => {
             return (
-              <Row align="top" gutter={16}>
+              <Row key={field.key} align="top" gutter={16}>
                 <Col flex={1}>
                   <Form.Item label="Remove">
                     <Button
