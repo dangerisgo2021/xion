@@ -13,7 +13,9 @@ export const OrderDetails = () => {
   const {
     order,
     loading,
+    frontDeskForm,
     initialValues,
+    completeDisabled,
     onValidated,
     onValidationFailed,
     onCancelClicked,
@@ -37,17 +39,17 @@ export const OrderDetails = () => {
                 <Divider />
                 <OrderActionsCard
                   order={order}
+                  completeDisabled={completeDisabled}
                   onCompletedClicked={onCompletedClicked}
                   onCancelClicked={onCancelClicked}
                 />
                 <Divider />
-                <OrderFormCard
-                  order={order}
-                />
+                <OrderFormCard order={order} />
               </Col>
               <Col span={8}>
                 <FrontDeskFormCard
                   order={order}
+                  frontDeskForm={frontDeskForm}
                   initialValues={initialValues}
                   onValidated={onValidated}
                   onValidationFailed={onValidationFailed}

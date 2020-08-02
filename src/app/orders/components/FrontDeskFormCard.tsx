@@ -10,12 +10,14 @@ const inputMap = {
 const { Option } = Select;
 export const FrontDeskFormCard = ({
   order,
+  frontDeskForm,
   initialValues,
   onValidated,
   onValidationFailed,
 }) => (
   <Card title="Front desk form">
     <Form
+      form={frontDeskForm}
       layout="vertical"
       name="frontDeskForm"
       onFinish={onValidated}

@@ -10,6 +10,7 @@ import {
   frontDeskFormValidated,
   frontDeskFormValidationFailed,
 } from "app/orders/actions";
+import { Form } from "antd";
 
 const parseInitialValuesFromOrder = ({ order }) => {
   const forms = order?.catalogItem?.frontDeskForms;
@@ -27,6 +28,8 @@ const parseInitialValuesFromOrder = ({ order }) => {
 export const useOrderDetailsContainer = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [completeDisabled, setCompleteDisabled] = React.useState(true);
+  const [frontDeskForm] = Form.useForm();
 
   const { orderId } = router.query;
 
@@ -35,13 +38,30 @@ export const useOrderDetailsContainer = () => {
   });
 
   const order = data?.order;
-  const initialValues = parseInitialValuesFromOrder({ order });
+  const initialValues = React.useMemo(
+    () => parseInitialValuesFromOrder({ order }),
+    [order]
+  );
 
+  React.useEffect(() => {
+    if (initialValues) {
+      frontDeskForm
+        ?.validateFields()
+        .then(() => {
+          setCompleteDisabled(false);
+        })
+        .catch(() => {
+          setCompleteDisabled(true);
+        });
+    }
+  }, [initialValues]);
   return {
     order,
     error,
     loading,
     initialValues,
+    frontDeskForm,
+    completeDisabled,
     onValidated: (formValues) => {
       dispatch(frontDeskFormValidated({ orderId, formValues }));
     },
