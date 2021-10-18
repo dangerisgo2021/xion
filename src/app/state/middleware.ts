@@ -1,8 +1,9 @@
 import { logger } from "app/state/utils/middleware/logger";
 import { throttle } from "app/state/utils/middleware/throttle";
 import { debounce } from "app/state/utils/middleware/debounce";
-import { login } from "app/auth/middleware/login";
-import { logout } from "app/auth/middleware/logout";
+import { getLatestSession } from "app/auth/middleware/getLatestSession";
+import { endSession } from "app/auth/middleware/endSession";
+import { startSession } from "app/auth/middleware/startSession";
 import { addForm } from "app/forms/middleware/addForm";
 import { updateFormOnSave } from "app/forms/middleware/updateFormOnSave";
 import { addCatalogItem } from "app/catalog/middleware/addCatalogItem";
@@ -14,13 +15,15 @@ import { saveFrontDeskFormsMiddleware } from "app/orders/middleware/saveFrontDes
 import { createOrderReport } from "app/reports/middleware/createOrderReport";
 import { assignOrder } from "app/orders/middleware/assignOrder";
 import { getCheckoutSummary } from "app/checkout/middleware/getCheckoutSummary";
+import { requestLogin } from "app/avatar/middleware/requestLogin";
 
 export const middleware = [
   throttle,
   debounce,
   logger,
-  login,
-  logout,
+  endSession,
+  getLatestSession,
+  startSession,
   addForm,
   updateFormOnSave,
   addCatalogItem,
@@ -32,4 +35,5 @@ export const middleware = [
   createOrderReport,
   assignOrder,
   getCheckoutSummary,
+  requestLogin,
 ];

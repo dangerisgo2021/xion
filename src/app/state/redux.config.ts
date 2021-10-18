@@ -25,4 +25,5 @@ export const config = {
   middleware,
   enhancers: [...getReduxDevToolsEnhancer()],
   rootReducer,
+  initialState: undefined,
 };

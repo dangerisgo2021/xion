@@ -1,10 +1,10 @@
 import React from "react";
 import { Layout } from "antd";
-import { useAuth } from "../../auth/hooks/useAuth";
+import { useContentContainer } from "app/layout/hooks/useContentContainer";
 
 const { Content: AntContent } = Layout;
 export const Content = ({ children }) => {
-  const { user } = useAuth();
+  const { user } = useContentContainer();
 
   return <AntContent>{!user ? "Please Login" : children}</AntContent>;
 };
