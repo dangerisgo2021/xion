@@ -1,5 +1,8 @@
+import { useSelector } from "react-redux";
+import { getSession } from "app/auth/selectors/getSession";
+
 export const useContentContainer = () => {
   return {
-    user: undefined
+    hasAuthSession: useSelector(getSession),
   };
 };

@@ -7,7 +7,6 @@ export default async function auth(req, res) {
   return await NextAuth(req, res, {
     callbacks: {
       async session({ session, user }) {
-        console.log({ session, user });
         return {
           ...session,
           user: {

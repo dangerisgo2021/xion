@@ -1,6 +1,6 @@
 import fetch from "isomorphic-unfetch";
 import { createBrowserClient } from "services/gateway/graphql/clients/createBrowserClient";
-import { createServerClient } from "services/gateway/graphql//clients/createServerClient";
+import { createServerClient } from "services/gateway/graphql/clients/createServerClient";
 
 const isServer = !process.browser;
 // Polyfill fetch() on the server (used by apollo-client)

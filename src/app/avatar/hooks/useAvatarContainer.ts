@@ -1,8 +1,8 @@
-import { useAuth } from "app/auth/hooks/useAuth";
+import {useSelector} from "react-redux";
+import {getSessionUserEmail} from "app/auth/selectors/getSessionUserEmail";
 
 export const useAvatarContainer = () => {
-  const { user } = useAuth();
   return {
-    user,
+    userEmail: useSelector(getSessionUserEmail)
   };
 };

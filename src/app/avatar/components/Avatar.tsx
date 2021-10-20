@@ -6,17 +6,18 @@ import { useAvatarContainer } from "app/avatar/hooks/useAvatarContainer";
 const { Text } = Typography;
 
 export const Avatar = () => {
-  const { user } = useAvatarContainer();
+  const { userEmail } = useAvatarContainer();
+
   return (
     <Space style={{ width: "100%", padding: "12px", backgroundColor: "aqua" }}>
       <Dropdown overlay={<AvatarMenu />} trigger={["click"]}>
         <Row align="middle" justify="space-between">
-          {user?.picture ? (
-            <AntAvatar size="large" src={user?.picture} />
-          ) : (
-            <AntAvatar size="large" icon={<UserOutlined />} />
-          )}
-          <Text style={{ margin: ".3vw" }}>{user?.nickname || "Login"}</Text>
+          <AntAvatar size="large" icon={<UserOutlined />} />
+          <Text style={{ margin: ".3vw" }}>
+            {userEmail
+              ? userEmail.slice(0, userEmail.indexOf("@"))
+              : "Login Please"}
+          </Text>
         </Row>
       </Dropdown>
     </Space>

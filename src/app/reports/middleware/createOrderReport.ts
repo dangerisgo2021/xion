@@ -1,5 +1,5 @@
 import { createWatcherMiddleware } from "app/state/utils/factories/createWatcherMiddleware";
-import { apolloClient } from "app/gateway/graphql/initGraphqlClient";
+import { apolloClient } from "services/gateway/graphql/initGraphqlClient";
 import {
   createOrderReportFormValidated,
   receivedOrdersReport,

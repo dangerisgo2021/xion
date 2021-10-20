@@ -4,7 +4,7 @@ import { useContentContainer } from "app/layout/hooks/useContentContainer";
 
 const { Content: AntContent } = Layout;
 export const Content = ({ children }) => {
-  const { user } = useContentContainer();
+  const { hasAuthSession } = useContentContainer();
 
-  return <AntContent>{!user ? "Please Login" : children}</AntContent>;
+  return <AntContent>{!hasAuthSession ? "Please Login" : children}</AntContent>;
 };
