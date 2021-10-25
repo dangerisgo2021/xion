@@ -5,6 +5,9 @@ import { getClient } from "database/mongodb";
 
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
+    adapter: MongoDBAdapter({
+      db: (await getClient).db(process.env.MONGODB_NAME),
+    }),
     callbacks: {
       async session({ session, user }) {
         return {
@@ -29,8 +32,5 @@ export default async function auth(req, res) {
         from: process.env.EMAIL_FROM,
       }),
     ],
-    adapter: MongoDBAdapter({
-      db: (await getClient).db(process.env.MONGODB_NAME),
-    }),
   });
 }

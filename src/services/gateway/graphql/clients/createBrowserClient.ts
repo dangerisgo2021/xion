@@ -8,21 +8,21 @@ import {
 } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "@apollo/link-ws";
-import { getSessionId } from "app/session/selectors/getSessionId";
-import { getAccessToken } from "app/auth/selectors/getAccessToken";
+import { getSession } from "app/session/selectors/getSession";
+import { getSessionUserId } from "app/auth/selectors/getSessionUserId";
 
 export const createBrowserClient = ({ initialState, uri }) => {
   const httpLink = new HttpLink({ uri });
 
   const contextMiddleware = new ApolloLink((operation, forward) => {
     const state = (window as any)?.__REDUX_STORE__?.getState();
-    const session = getSessionId(state);
-    const accessToken = getAccessToken(state);
+    const session = getSession(state);
+    const userId = getSessionUserId(state);
     operation.setContext(({ headers = {} }) => {
       return {
         headers: {
           ...headers,
-          authorization: accessToken,
+          authorization: userId,
           session: session?.id,
           client: session?.clientId,
         },
