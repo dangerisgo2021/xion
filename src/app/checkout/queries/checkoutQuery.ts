@@ -8,7 +8,6 @@ export const checkoutQuery = gql`
       }
       entries {
         id
-        assignee
         completed
         firstName
         lastName

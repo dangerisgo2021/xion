@@ -10,7 +10,6 @@ const mapFormValuesToCheckoutInput = ({ formValues }) => {
   const [start, end] = formValues?.created ?? [];
   const created = formValues?.created ? { start, end } : undefined;
   return {
-    limit: 0,
     created,
     roomNumber: formValues?.roomNumber || undefined,
   };
