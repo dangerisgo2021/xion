@@ -47,7 +47,9 @@ export const createBrowserClient = ({ initialState, uri }) => {
     httpLink
   );
   return new ApolloClient({
-    cache: new InMemoryCache().restore(initialState || {}),
+    cache: new InMemoryCache({ addTypename: false }).restore(
+      initialState || {}
+    ),
     link: concat(contextMiddleware, splitLink),
     connectToDevTools: true,
   });
